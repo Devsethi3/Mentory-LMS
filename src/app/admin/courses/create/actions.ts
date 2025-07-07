@@ -17,7 +17,7 @@ export async function CreateCourse(
       };
     }
 
-    const data = await prisma.course.create({
+    await prisma.course.create({
       data: {
         ...validation.data,
         userId: "",
