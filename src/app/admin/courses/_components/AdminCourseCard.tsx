@@ -15,6 +15,7 @@ import {
   PencilIcon,
   School,
   TimerIcon,
+  Trash2Icon,
   TrashIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -41,20 +42,20 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem asChild>
                 <Link href={`/admin/course/${data.id}/edit`}>
-                  <PencilIcon className="size-4" />
+                  <PencilIcon className="size-4 mr-2" />
                   Edit Course
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href={`/admin/course/${data.slug}`}>
-                  <EyeIcon className="size-4" />
+                  <EyeIcon className="size-4 mr-2" />
                   Preview{" "}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href={`/admin/course/${data.slug}`}>
-                  <TrashIcon className="size-4" />
+                <Link href={`/admin/course/${data.id}/delete`}>
+                  <Trash2Icon className="size-4 mr-2 text-destructive" />
                   Delete Course
                 </Link>
               </DropdownMenuItem>
