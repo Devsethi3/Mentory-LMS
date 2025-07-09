@@ -43,9 +43,11 @@ import { useTransition } from "react";
 import { tryCatch } from "@/hooks/try-catch";
 import { CreateCourse } from "./actions";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const CourseCreationPage = () => {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
   const form = useForm<CourseSchemaType>({
     resolver: zodResolver(courseSchema),
     defaultValues: {
@@ -73,6 +75,7 @@ const CourseCreationPage = () => {
       if (result?.status === "success") {
         toast.success(result.message);
         form.reset();
+        router.push("/admin/courses");
       } else if (result?.status === "error") {
         toast.error(result.message);
       }
