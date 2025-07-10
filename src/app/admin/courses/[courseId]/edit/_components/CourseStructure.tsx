@@ -142,6 +142,17 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
 
       setItems(updatedChapterForSate);
     }
+
+    if (activeType === "lesson" && overType === "lesson") {
+      const chapterId = active.data.current?.chapterId;
+      const overChapterId = over.data.current?.chapterId;
+
+      if (!chapterId || chapterId !== overChapterId) {
+        toast.error(
+          "Lesson move between chapters or invalid chapterId is not allowed"
+        );
+      }
+    }
   }
 
   const toggleChapter = (chapterId: string) => {
