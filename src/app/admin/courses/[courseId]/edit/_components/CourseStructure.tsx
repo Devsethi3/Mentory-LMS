@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 interface CourseStructureProps {
   data: AdminCourseSingularType;
@@ -66,6 +67,8 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
 
   const [items, setItems] = useState(initialItems);
 
+  console.log(items);
+
   function SortableItem({ children, id, className, data }: SortableItemsProps) {
     const {
       attributes,
@@ -96,13 +99,48 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
   function handleDragEnd(event: any) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
-      setItems((items) => {
-        const oldIndex = items.indexOf(active.id);
-        const newIndex = items.indexOf(over.id);
+    if (!over || active.id === over.id) {
+      return;
+    }
 
-        return arrayMove(items, oldIndex, newIndex);
-      });
+    const activeId = active.id;
+    const overId = over.id;
+    const activeType = active.data.current.type as "chapter" | "lesson";
+    const overType = over.data.current.type as "chapter" | "lesson";
+    const courseId = data.id;
+
+    if (activeType === "chapter") {
+      let targetChapterId = null;
+
+      if (overType === "chapter") {
+        targetChapterId = overId;
+      } else if (overType === "lesson") {
+        targetChapterId = over.data.current?.chapterId ?? null;
+      }
+
+      if (!targetChapterId) {
+        toast.error("Could not determine the chapter for rendering");
+      }
+
+      const oldIndex = items.findIndex((item) => item.id === activeId);
+      const newIndex = items.findIndex((item) => item.id === targetChapterId);
+
+      if (oldIndex === -1 || newIndex === -1) {
+        toast.error("Cannot move chapter to this position");
+        return;
+      }
+
+      const reorderedLocalChapter = arrayMove(items, oldIndex, newIndex);
+      const updatedChapterForSate = reorderedLocalChapter.map(
+        (chapter, index) => ({
+          ...chapter,
+          order: index + 1,
+        })
+      );
+
+      const previousItems = [...items];
+
+      setItems(updatedChapterForSate);
     }
   }
 
@@ -212,7 +250,9 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
                             ))}
                           </SortableContext>
                           <div className="p-2">
-                            <Button variant="outline" className="w-full">Create New Lesson</Button>
+                            <Button variant="outline" className="w-full">
+                              Create New Lesson
+                            </Button>
                           </div>
                         </div>
                       </CollapsibleContent>
