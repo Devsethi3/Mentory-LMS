@@ -151,6 +151,7 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
         toast.error(
           "Lesson move between chapters or invalid chapterId is not allowed"
         );
+        return;
       }
     }
   }
