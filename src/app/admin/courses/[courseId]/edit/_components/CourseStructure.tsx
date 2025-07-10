@@ -153,6 +153,15 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
         );
         return;
       }
+
+      const chapterIndex = items.findIndex(
+        (chapter) => chapter.id === chapterId
+      );
+
+      if (chapterIndex === -1) {
+        toast.error("Could not find chapter for lesson");
+        return;
+      }
     }
   }
 
