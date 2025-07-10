@@ -41,20 +41,20 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem asChild>
-                <Link href={`/admin/course/${data.id}/edit`}>
+                <Link href={`/admin/courses/${data.id}/edit`}>
                   <PencilIcon className="size-4 mr-2" />
                   Edit Course
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={`/admin/course/${data.slug}`}>
+                <Link href={`/admin/courses/${data.slug}`}>
                   <EyeIcon className="size-4 mr-2" />
                   Preview{" "}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href={`/admin/course/${data.id}/delete`}>
+                <Link href={`/admin/courses/${data.id}/delete`}>
                   <Trash2Icon className="size-4 mr-2 text-destructive" />
                   Delete Course
                 </Link>
@@ -74,7 +74,7 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
 
         <CardContent className="py-6">
           <Link
-            href={`/admin/course/${data.id}/edit`}
+            href={`/admin/courses/${data.id}/edit`}
             className="font-medium text-lg line-clamp-2 hover:underline group-hover:text-primary"
           >
             {data.title}
@@ -96,7 +96,7 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
           </div>
 
           <Link
-            href={`/admin/course/${data.id}/edit`}
+            href={`/admin/courses/${data.id}/edit`}
             className={buttonVariants({
               className: "w-full mt-2",
             })}

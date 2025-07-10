@@ -1,12 +1,12 @@
 "use server";
 
 import { requireAdmin } from "@/data/admin/require-admin";
-import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
 import { prisma } from "@/lib/db";
 import { ApiResponse } from "@/lib/types";
+import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
+
 import { courseSchema, CourseSchemaType } from "@/lib/zodSchema";
 import { request } from "@arcjet/next";
-import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 const aj = arcjet
   .withRule(
@@ -22,16 +22,19 @@ const aj = arcjet
       max: 5,
     })
   );
-  
-export async function CreateCourse(
-  values: CourseSchemaType
+
+export async function editCourse(
+  data: CourseSchemaType,
+  courseId: string
 ): Promise<ApiResponse> {
-  const session = await requireAdmin();
+  const user = await requireAdmin();
+
   try {
     const req = await request();
     const decision = await aj.protect(req, {
-      fingerprint: session.user.id,
+      fingerprint: user.user.id,
     });
+
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
         return {
@@ -46,37 +49,34 @@ export async function CreateCourse(
         };
       }
     }
-    // Don't catch redirect errors from requireAdmin
-    const validation = courseSchema.safeParse(values);
+    
+    const result = courseSchema.safeParse(data);
 
-    if (!validation.success) {
+    if (!result.success) {
       return {
         status: "error",
-        message: "Invalid Form Data",
+        message: "Invalid data",
       };
     }
 
-    await prisma.course.create({
+    await prisma.course.update({
+      where: {
+        id: courseId,
+        userId: user.user.id,
+      },
       data: {
-        ...validation.data,
-        userId: session?.user.id as string,
+        ...result.data,
       },
     });
 
     return {
       status: "success",
-      message: "Course created successfully",
+      message: "Course updated successfully",
     };
   } catch (error) {
-    // Re-throw redirect errors so Next.js can handle them
-    if (isRedirectError(error)) {
-      throw error;
-    }
-
-    console.log(error);
     return {
       status: "error",
-      message: "Failed to create course",
+      message: "Failed to update the Course",
     };
   }
 }
