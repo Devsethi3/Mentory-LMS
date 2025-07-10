@@ -162,6 +162,15 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
         toast.error("Could not find chapter for lesson");
         return;
       }
+      const chapterToUpdate = items[chapterIndex];
+
+      const oldLessonIndex = chapterToUpdate.lessons.findIndex(
+        (lesson) => lesson.id === active.id
+      );
+
+      const newLessonIndex = chapterToUpdate.lessons.findIndex(
+        (lesson) => lesson.id === overId
+      );
     }
   }
 
