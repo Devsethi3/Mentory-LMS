@@ -62,6 +62,7 @@ const NewChapterModal = ({ courseId }: { courseId: string }) => {
     }
     setIsOpen(open);
   };
+  
   return (
     <>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
