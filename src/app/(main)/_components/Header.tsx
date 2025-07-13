@@ -27,9 +27,9 @@ const Header = () => {
                 <span>Features</span>
                 <ChevronDown className="w-4 h-4" />
               </div>
-              <a href="#pricing">Pricing</a>
-              <a href="#blog">Blog</a>
-              <a href="#changelog">Changelog</a>
+              <Link href="/courses">Courses</Link>
+              <Link href="#blog">Blog</Link>
+              <Link href="#changelog">Changelog</Link>
             </nav>
 
             <div className="flex items-center space-x-4">

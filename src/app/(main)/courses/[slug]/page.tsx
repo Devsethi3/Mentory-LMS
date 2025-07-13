@@ -3,8 +3,16 @@ import { env } from "@/lib/env";
 import Image from "next/image";
 import Header from "../../_components/Header";
 import { Badge } from "@/components/ui/badge";
-import { IconCategory, IconChartBar, IconClock } from "@tabler/icons-react";
+import {
+  IconCategory,
+  IconChartBar,
+  IconChevronDown,
+  IconClock,
+} from "@tabler/icons-react";
 import { Separator } from "@/components/ui/separator";
+import RenderDescription from "@/components/rich-text-editor/RenderDescription";
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Card, CardContent } from "@/components/ui/card";
 
 type Params = Promise<{ slug: string }>;
 
@@ -58,7 +66,61 @@ const SlugPage = async ({ params }: { params: Params }) => {
                 Course Description
               </h2>
 
-              <div>{course.description}</div>
+              <RenderDescription json={JSON.parse(course.description)} />
+            </div>
+          </div>
+
+          <div className="mt-12 space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-3xl font-semibold tracking-tight">
+                Course Content
+              </h2>
+              <div>
+                {course.chapter.length} chapter |{" "}
+                {course.chapter.reduce(
+                  (total, chapter) => total + chapter.lessons.length,
+                  0
+                ) || 0}{" "}
+                Lessons
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              {course.chapter.map((chapter, index) => (
+                <Collapsible key={chapter.id} defaultOpen={index === 0}>
+                  <Card className="py-0 overflow-hidden border-2 transition-all duration-200 hover:shadow-md">
+                    <CollapsibleTrigger>
+                      <div>
+                        <CardContent className="p-6 hover:bg-muted/50">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                              <p className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold">
+                                {index + 1}
+                              </p>
+                              <div>
+                                <h3 className="text-lg font-semibold text-left">
+                                  {chapter.title}
+                                </h3>
+                                <p className="text-sm text-muted-foreground m-1 text-left">
+                                  {chapter.lessons.length} lesson
+                                  {chapter.lessons.length !== 1 ? "s" : ""}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Badge className="text-xs" variant="outline">
+                                {chapter.lessons.length} lesson
+                                {chapter.lessons.length !== 1 ? "s" : ""}
+                              </Badge>
+                              <IconChevronDown className="size-5 text-muted-foreground" />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </div>
+                    </CollapsibleTrigger>
+                  </Card>
+                </Collapsible>
+              ))}
             </div>
           </div>
         </div>
@@ -68,3 +130,5 @@ const SlugPage = async ({ params }: { params: Params }) => {
 };
 
 export default SlugPage;
+
+// git commit message for making this page rendering lessons and chapters just share the git message nothing else
