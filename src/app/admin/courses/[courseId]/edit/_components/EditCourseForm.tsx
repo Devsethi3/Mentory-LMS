@@ -165,6 +165,7 @@ const EditCourseForm = ({ data }: EditCourseFormProps) => {
                 <FormLabel>Thumbnail Image</FormLabel>
                 <FormControl>
                   <Uploader
+                  fileTypeAccepted="image"
                     onChange={(value) => {
                       field.onChange(value);
                       // Trigger validation manually

@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { tryCatch } from "@/hooks/try-catch";
 import { createLesson } from "../actions";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const NewLessonModal = ({
   courseId,
@@ -35,6 +36,7 @@ const NewLessonModal = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [pending, startTransition] = useTransition();
+  const router = useRouter()
   const form = useForm<LessonSchemaType>({
     resolver: zodResolver(lessonSchema),
     defaultValues: {
@@ -57,6 +59,8 @@ const NewLessonModal = ({
         toast.success(result.message);
         form.reset();
         setIsOpen(false);
+        // Todo: Navigate to the newly created lesson
+        // router.push(`/admin/courses/${courseId}/${chapterId}/${lesson.id}`);
       } else if (result.status === "error") {
         toast.error(result.message);
       }

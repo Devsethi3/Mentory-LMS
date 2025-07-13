@@ -7,6 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton } from "@/components/ui/skeleton";
 import { AdminCourseType } from "@/data/admin/admin-get-courses";
 import { useConstructUrl } from "@/hooks/use-construct";
 import {
@@ -110,3 +111,36 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
 };
 
 export default AdminCourseCard;
+
+export function AdminCourseCardSkeleton() {
+  return (
+    <Card className="group relative py-0 gap-0 rounded-lg">
+      <div className="absolute top-2 right-2 z-10">
+        <Skeleton className="w-8 h-8 rounded-md" />
+      </div>
+
+      <Skeleton className="w-full rounded-t-lg aspect-video h-full" />
+
+      <CardContent className="py-6">
+        <Skeleton className="h-6 w-full mb-2" />
+        <Skeleton className="h-6 w-3/4 mb-4" />
+
+        <Skeleton className="h-4 w-full mb-2" />
+        <Skeleton className="h-4 w-2/3 mb-4" />
+
+        <div className="mt-4 flex items-center gap-x-5">
+          <div className="gap-x-2 flex items-center">
+            <Skeleton className="size-4 rounded-md" />
+            <Skeleton className="h-4 w-12" />
+          </div>
+          <div className="gap-x-2 flex items-center">
+            <Skeleton className="size-4 rounded-md" />
+            <Skeleton className="h-4 w-16" />
+          </div>
+        </div>
+
+        <Skeleton className="w-full h-10 mt-2 rounded-md" />
+      </CardContent>
+    </Card>
+  );
+}
