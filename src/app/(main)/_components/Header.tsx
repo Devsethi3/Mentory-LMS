@@ -1,7 +1,9 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
-import { buttonVariants } from "./ui/button";
+import { buttonVariants } from "../../../components/ui/button";
 import Image from "next/image";
-import { ThemeToggle } from "./ui/theme-toggle";
+import { ThemeToggle } from "../../../components/ui/theme-toggle";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { UserDropdown } from "./UserDropdown";

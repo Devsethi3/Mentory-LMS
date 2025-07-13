@@ -1,7 +1,7 @@
 "use client";
 
-import Features from "@/components/Features";
-import Header from "@/components/Header";
+import Features from "@/app/(main)/_components/Features";
+import Header from "@/app/(main)/_components/Header";
 import { Button } from "@/components/ui/button";
 
 const HomePage = () => {
