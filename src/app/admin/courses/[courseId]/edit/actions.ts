@@ -3,7 +3,7 @@
 import { requireAdmin } from "@/data/admin/require-admin";
 import { prisma } from "@/lib/db";
 import { ApiResponse } from "@/lib/types";
-import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
+import arcjet, { fixedWindow } from "@/lib/arcjet";
 
 import {
   chapterSchema,
@@ -16,20 +16,13 @@ import {
 import { request } from "@arcjet/next";
 import { revalidatePath } from "next/cache";
 
-const aj = arcjet
-  .withRule(
-    detectBot({
-      mode: "LIVE",
-      allow: [],
-    })
-  )
-  .withRule(
-    fixedWindow({
-      mode: "LIVE",
-      window: "1m",
-      max: 5,
-    })
-  );
+const aj = arcjet.withRule(
+  fixedWindow({
+    mode: "LIVE",
+    window: "1m",
+    max: 5,
+  })
+);
 
 export async function editCourse(
   data: CourseSchemaType,

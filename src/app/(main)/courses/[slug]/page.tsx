@@ -20,13 +20,17 @@ import {
 } from "@/components/ui/collapsible";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { checkIfCourseBought } from "@/data/user/user-is-enrolled";
+import Link from "next/link";
+import EnrollmentButton from "./_components/EnrollmentButton";
 
 type Params = Promise<{ slug: string }>;
 
 const SlugPage = async ({ params }: { params: Params }) => {
   const { slug } = await params;
   const course = await getIndividualCourse(slug);
+  const isEnrolled = await checkIfCourseBought(course.id);
   return (
     <>
       <Header />
@@ -255,7 +259,19 @@ const SlugPage = async ({ params }: { params: Params }) => {
                     </li>
                   </ul>
                 </div>
-                <Button className="w-full">Enroll Now!</Button>
+
+                {isEnrolled ? (
+                  <Link
+                    href="/dashboard"
+                    className={buttonVariants({ className: "w-full" })}
+                  >
+                    <IconPlayerPlay className="inline size-4" />
+                    Watch Now!
+                  </Link>
+                ) : (
+                  <EnrollmentButton courseId={course.id} />
+                )}
+
                 <p className="mt-3 text-center text-xs text-muted-foreground">
                   30-day money-back guarantee
                 </p>

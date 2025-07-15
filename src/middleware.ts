@@ -13,6 +13,7 @@ const aj = arcjet({
         "CATEGORY:SEARCH_ENGINE",
         "CATEGORY:MONITOR",
         "CATEGORY:PREVIEW",
+        "STRIPE_WEBHOOK", // Allow Stripe webhooks
         // Google, Bing, etc
         // Uncomment to allow these other common bot categories
         // See the full list at https://arcjet.com/bot-list
@@ -36,7 +37,7 @@ async function authMiddleware(request: NextRequest) {
 export const config = {
   // matcher tells Next.js which routes to run the middleware on.
   // This runs the middleware on all routes except for static assets.
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|api/auth).*)"],
 };
 
 // Pass any existing middleware with the optional existingMiddleware prop
@@ -47,4 +48,3 @@ export default createMiddleware(aj, async (request: NextRequest) => {
 
   return NextResponse.next();
 });
-
