@@ -3,6 +3,7 @@
 import { requireAdmin } from "@/data/admin/require-admin";
 import arcjet, { fixedWindow } from "@/lib/arcjet";
 import { prisma } from "@/lib/db";
+import { stripe } from "@/lib/stripe";
 import { ApiResponse } from "@/lib/types";
 import { courseSchema, CourseSchemaType } from "@/lib/zodSchema";
 import { request } from "@arcjet/next";
@@ -25,6 +26,7 @@ export async function CreateCourse(
     const decision = await aj.protect(req, {
       fingerprint: session.user.id,
     });
+
     if (decision.isDenied()) {
       if (decision.reason.isRateLimit()) {
         return {
@@ -39,7 +41,7 @@ export async function CreateCourse(
         };
       }
     }
-    // Don't catch redirect errors from requireAdmin
+
     const validation = courseSchema.safeParse(values);
 
     if (!validation.success) {
@@ -49,10 +51,20 @@ export async function CreateCourse(
       };
     }
 
+    const data = await stripe.products.create({
+      name: validation.data.title,
+      description: validation.data.description,
+      default_price_data: {
+        currency: "usd",
+        unit_amount: validation.data.price * 100,
+      },
+    });
+
     await prisma.course.create({
       data: {
         ...validation.data,
         userId: session?.user.id as string,
+        stripePriceId: data.default_price as string,
       },
     });
 
@@ -61,7 +73,6 @@ export async function CreateCourse(
       message: "Course created successfully",
     };
   } catch (error) {
-    // Re-throw redirect errors so Next.js can handle them
     if (isRedirectError(error)) {
       throw error;
     }
@@ -69,7 +80,7 @@ export async function CreateCourse(
     console.log(error);
     return {
       status: "error",
-      message: "Failed to create course",
+      message: `Failed to create course ${error}`,
     };
   }
 }
