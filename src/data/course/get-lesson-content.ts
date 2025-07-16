@@ -20,6 +20,11 @@ export async function getLessonContent(lessonId: string) {
       chapter: {
         select: {
           courseId: true,
+          course: {
+            select: {
+              slug: true,
+            },
+          },
         },
       },
     },

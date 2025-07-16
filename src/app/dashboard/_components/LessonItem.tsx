@@ -28,7 +28,7 @@ const LessonItem = ({ lesson, slug, isActive }: LessonItemProps) => {
               "bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-900/50 text-green-800 dark:text-green-200",
             isActive &&
               !completed &&
-              "bg-primary/10 dark:bg-primary/20 border-primary/50 hover:bg-primary/20 dark:hover:bg-primary/30 text-primary-foreground"
+              "bg-primary/10 dark:bg-primary/20 border-primary/50 hover:bg-primary/20 dark:hover:bg-primary/30 text-primary"
           ),
         })}
       >
@@ -41,10 +41,18 @@ const LessonItem = ({ lesson, slug, isActive }: LessonItemProps) => {
             ) : (
               <div
                 className={cn(
-                  "size-5 rounded-full border-2 bg-background flex justify-center items-center"
+                  "size-5 rounded-full border-2 bg-background flex justify-center items-center",
+                  isActive
+                    ? "border-primary bg-primary/10 dark:bg-primary/20"
+                    : "border-muted-foreground/60"
                 )}
               >
-                <PlayIcon className={cn("size-2.5 fill-current")} />
+                <PlayIcon
+                  className={cn(
+                    "size-2.5 fill-current",
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  )}
+                />
               </div>
             )}
           </div>
@@ -53,7 +61,11 @@ const LessonItem = ({ lesson, slug, isActive }: LessonItemProps) => {
             <p
               className={cn(
                 "text-xs font-medium truncate",
-                completed && "text-green-800 dark:text-green-200"
+                completed
+                  ? "text-green-800 dark:text-green-200"
+                  : isActive
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground"
               )}
             >
               {lesson.position}. {lesson.title}
@@ -62,6 +74,10 @@ const LessonItem = ({ lesson, slug, isActive }: LessonItemProps) => {
               <p className="text-[10px] text-green-700 dark:text-green-300 font-medium">
                 Completed
               </p>
+            )}
+
+            {isActive && !completed && (
+              <p className="text-[10px] text-primary">Currently Watching</p>
             )}
           </div>
         </div>

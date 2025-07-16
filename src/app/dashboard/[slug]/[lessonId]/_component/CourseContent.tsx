@@ -1,14 +1,24 @@
+"use client";
+
 import RenderDescription from "@/components/rich-text-editor/RenderDescription";
 import { Button } from "@/components/ui/button";
 import { LessonContentType } from "@/data/course/get-lesson-content";
+import { tryCatch } from "@/hooks/try-catch";
 import { useConstructUrl } from "@/hooks/use-construct";
-import { BookIcon, CheckCircleIcon } from "lucide-react";
+import { BookIcon, CheckCircleIcon, Loader2 } from "lucide-react";
+import { useTransition } from "react";
+import { markLessonAsComplete } from "../actions";
+import { toast } from "sonner";
+import { useConfetti } from "@/hooks/use-confetti";
 
 interface CourseContentProps {
   data: LessonContentType;
 }
 
 const CourseContent = ({ data }: CourseContentProps) => {
+  const [pending, startTransition] = useTransition();
+  const { triggerConfetti } = useConfetti();
+
   function VideoPlayer({
     thumbnailKey,
     videoKey,
@@ -47,6 +57,25 @@ const CourseContent = ({ data }: CourseContentProps) => {
     );
   }
 
+  function onSubmit() {
+    startTransition(async () => {
+      const { data: result, error } = await tryCatch(
+        markLessonAsComplete(data.id, data.chapter.course.slug)
+      );
+
+      if (error) {
+        toast.error("An unexpected error occured. Please try again.");
+      }
+
+      if (result?.status === "success") {
+        toast.success(result.message);
+        triggerConfetti();
+      } else if (result?.status === "error") {
+        toast.error(result.message);
+      }
+    });
+  }
+
   return (
     <div className="flex flex-col h-full bg-background pl-6">
       <VideoPlayer
@@ -54,7 +83,7 @@ const CourseContent = ({ data }: CourseContentProps) => {
         videoKey={data.videoKey ?? ""}
       />
       <div className="py-4 border-b">
-        <Button variant="outline">
+        <Button variant="outline" onClick={onSubmit} disabled={pending}>
           <CheckCircleIcon className="size-4 mr-2 text-green-500" />
           Mark as complete
         </Button>
