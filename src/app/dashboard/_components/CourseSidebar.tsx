@@ -7,6 +7,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { CourseSidebarDataType } from "@/data/course/get-course-sidebar-data";
 import { ChevronDown, Play } from "lucide-react";
+import LessonItem from "./LessonItem";
 
 interface CourseSidebarProps {
   course: CourseSidebarDataType["course"];
@@ -64,7 +65,11 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-3 pl-5 border-l-2 space-y-3">
               {chapter.lessons.map((lesson) => (
-                <p key={lesson.id}>{lesson.title}</p>
+                <LessonItem
+                  key={lesson.id}
+                  lesson={lesson}
+                  slug={course.slug}
+                />
               ))}
             </CollapsibleContent>
           </Collapsible>
