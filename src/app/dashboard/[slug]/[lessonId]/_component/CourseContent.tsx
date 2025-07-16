@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LessonContentType } from "@/data/course/get-lesson-content";
 import { tryCatch } from "@/hooks/try-catch";
 import { useConstructUrl } from "@/hooks/use-construct";
-import { BookIcon, CheckCircleIcon, Loader2 } from "lucide-react";
+import { BookIcon, CheckCircle, CheckCircleIcon, Loader2 } from "lucide-react";
 import { useTransition } from "react";
 import { markLessonAsComplete } from "../actions";
 import { toast } from "sonner";
@@ -83,10 +83,20 @@ const CourseContent = ({ data }: CourseContentProps) => {
         videoKey={data.videoKey ?? ""}
       />
       <div className="py-4 border-b">
-        <Button variant="outline" onClick={onSubmit} disabled={pending}>
-          <CheckCircleIcon className="size-4 mr-2 text-green-500" />
-          Mark as complete
-        </Button>
+        {data.lessonProgress.length > 0 ? (
+          <Button
+            variant={"outline"}
+            className="bg-green-500/10 text-green-500 hover:text-green-600"
+          >
+            <CheckCircle className="size-4 mr-2 text-green-500" />
+            Completed
+          </Button>
+        ) : (
+          <Button variant="outline" onClick={onSubmit} disabled={pending}>
+            <CheckCircleIcon className="size-4 mr-2 text-green-500" />
+            Mark as complete
+          </Button>
+        )}
       </div>
 
       <div className="space-y-3 pt-3">
