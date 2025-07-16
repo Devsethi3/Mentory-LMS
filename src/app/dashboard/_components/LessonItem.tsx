@@ -11,10 +11,11 @@ interface LessonItemProps {
     description: string | null;
   };
   slug: string;
+  isActive?: boolean;
 }
 
-const LessonItem = ({ lesson, slug }: LessonItemProps) => {
-  const completed = true;
+const LessonItem = ({ lesson, slug, isActive }: LessonItemProps) => {
+  const completed = false;
   return (
     <div>
       <Link
@@ -24,7 +25,10 @@ const LessonItem = ({ lesson, slug }: LessonItemProps) => {
           className: cn(
             "w-full p-2.5 h-auto justify-start transition-all",
             completed &&
-              "bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-900/50 text-green-800 dark:text-green-200"
+              "bg-green-100 dark:bg-green-900/30 dark:hover:bg-green-900/50 text-green-800 dark:text-green-200",
+            isActive &&
+              !completed &&
+              "bg-primary/10 dark:bg-primary/20 border-primary/50 hover:bg-primary/20 dark:hover:bg-primary/30 text-primary-foreground"
           ),
         })}
       >
