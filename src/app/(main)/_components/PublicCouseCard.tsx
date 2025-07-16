@@ -11,7 +11,7 @@ import Link from "next/link";
 interface PublicCourseCardProps {
   data: PublicCourseType;
 }
-const PublicCouseCard = ({ data }: PublicCourseCardProps) => {
+const PublicCourseCard = ({ data }: PublicCourseCardProps) => {
   const thumbnailUrl = useConstructUrl(data.fileKey);
   return (
     <>
@@ -62,7 +62,7 @@ const PublicCouseCard = ({ data }: PublicCourseCardProps) => {
   );
 };
 
-export default PublicCouseCard;
+export default PublicCourseCard;
 
 export function PublicCourseCardSkeleton() {
   return (

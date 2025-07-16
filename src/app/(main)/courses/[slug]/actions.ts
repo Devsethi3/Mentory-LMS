@@ -136,6 +136,7 @@ export async function enrollInCourseAction(
 
       const checkoutSession = await stripe.checkout.sessions.create({
         customer: stripeCustomerId,
+        // Todo: fix this price id
         line_items: [
           {
             price: "price_1Rl5IgRvnhV8Z0znnhidFSYl",

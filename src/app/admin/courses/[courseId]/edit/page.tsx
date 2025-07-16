@@ -23,7 +23,7 @@ const EditCoursePage = async ({ params }: { params: Params }) => {
         <span className="text-primary underline">{data.title}</span>
       </h1>
 
-      <Tabs defaultValue="course-structure" className="w-full">
+      <Tabs defaultValue="basic-info" className="w-full">
         <TabsList className="grid grid-cols-2 w-full">
           <TabsTrigger value="basic-info">Basic Info</TabsTrigger>
           <TabsTrigger value="course-structure">Course Structure</TabsTrigger>
@@ -61,4 +61,3 @@ const EditCoursePage = async ({ params }: { params: Params }) => {
 
 export default EditCoursePage;
 
-// fix this error 
