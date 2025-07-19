@@ -52,6 +52,8 @@ export async function deleteCourse(courseId: string): Promise<ApiResponse> {
       message: "Course Deleted Successfully",
     };
   } catch (error) {
+    console.log(error);
+    
     return {
       status: "error",
       message: "An error occurred while deleting the course.",

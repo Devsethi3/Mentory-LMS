@@ -1,4 +1,4 @@
-import { Ban, PlusCircle } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
 import Image from "next/image";

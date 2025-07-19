@@ -9,12 +9,10 @@ import {
   type SlidingWindowRateLimitOptions,
   detectBot,
   protectSignup,
-  shield,
   slidingWindow,
 } from "@arcjet/next";
 import { toNextJsHandler } from "better-auth/next-js";
 import { NextRequest } from "next/server";
-
 
 const emailOptions = {
   mode: "LIVE", // will block requests. Use "DRY_RUN" to log only

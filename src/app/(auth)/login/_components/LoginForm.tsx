@@ -32,6 +32,8 @@ const LoginForm = () => {
             toast.success("Signed in with GitHub, you will be redirected...");
           },
           onError: (error) => {
+            console.log(error);
+            
             toast.error("Internal Server Error");
           },
         },
@@ -50,6 +52,8 @@ const LoginForm = () => {
             router.push(`/verify-request?email=${email}`);
           },
           onError: (error) => {
+            console.log(error);
+            
             toast.error("Internal Server Error");
           },
         },

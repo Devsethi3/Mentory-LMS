@@ -14,11 +14,12 @@ import Link from "next/link";
 interface CourseProgressProps {
   data: EnrolledCourseType;
 }
+
 const CourseProgressCard = ({ data }: CourseProgressProps) => {
   const thumbnailUrl = useConstructUrl(data.Course.fileKey);
 
   const { totalLessons, completedLessons, progressPercentage } =
-    useCourseProgress({ courseData: data.Course as any });
+    useCourseProgress({ courseData: data.Course });
 
   return (
     <>

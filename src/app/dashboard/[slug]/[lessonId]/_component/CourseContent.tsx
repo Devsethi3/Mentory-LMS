@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { LessonContentType } from "@/data/course/get-lesson-content";
 import { tryCatch } from "@/hooks/try-catch";
 import { useConstructUrl } from "@/hooks/use-construct";
-import { BookIcon, CheckCircle, CheckCircleIcon, Loader2 } from "lucide-react";
+import { BookIcon, CheckCircle, CheckCircleIcon } from "lucide-react";
 import { useTransition } from "react";
 import { markLessonAsComplete } from "../actions";
 import { toast } from "sonner";

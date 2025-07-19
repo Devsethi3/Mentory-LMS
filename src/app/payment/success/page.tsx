@@ -107,7 +107,7 @@ async function PaymentSuccessContent({
             <>
               <p className="text-muted-foreground">
                 Your payment is being processed. This usually takes a few
-                moments. You'll receive access once the payment is confirmed.
+                moments. You&apos;ll receive access once the payment is confirmed.
               </p>
               <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
                 <p className="text-sm text-orange-700">

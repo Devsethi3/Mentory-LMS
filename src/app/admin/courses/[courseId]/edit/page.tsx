@@ -1,6 +1,5 @@
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
@@ -46,7 +45,7 @@ const EditCoursePage = async ({ params }: { params: Params }) => {
             <CardHeader>
               <CardTitle>Course Structure</CardTitle>
               <CardDescription>
-                Here's you can update your course structure
+                Here&apos;s you can update your course structure
               </CardDescription>
             </CardHeader>
             <CardContent>

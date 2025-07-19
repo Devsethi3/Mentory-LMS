@@ -123,6 +123,8 @@ const Uploader = ({ value, onChange, fileTypeAccepted }: UploaderProps) => {
           xhr.send(file);
         });
       } catch (error) {
+        console.log(error);
+        
         toast.error("Something went wrong");
         setFileState((prev) => ({
           ...prev,
@@ -207,6 +209,7 @@ const Uploader = ({ value, onChange, fileTypeAccepted }: UploaderProps) => {
 
       toast.success("File removed successfully");
     } catch (error) {
+      console.log(error);
       toast.error("Error Removing File. Please Try Again");
 
       setFileState((prev) => ({

@@ -30,7 +30,7 @@ const NotAdminPage = () => {
             </CardTitle>
 
             <CardDescription className="text-muted-foreground mt-2 leading-relaxed">
-              You don't have admin privileges to access this area. Admin access
+              You don&apos;t have admin privileges to access this area. Admin access
               is required to create courses, manage content, and access
               administrative features.
             </CardDescription>

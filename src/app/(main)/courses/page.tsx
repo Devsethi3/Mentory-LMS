@@ -4,7 +4,7 @@ import PublicCouseCard, {
   PublicCourseCardSkeleton,
 } from "../_components/PublicCouseCard";
 import { Suspense } from "react";
-import { BookOpen, Search, Sparkles } from "lucide-react";
+import { BookOpen, Search } from "lucide-react";
 
 const PublicCoursePage = () => {
   return (
@@ -81,7 +81,7 @@ function EmptyState() {
           No Courses Available Yet
         </h2>
         <p className="text-muted-foreground leading-relaxed">
-          We're working hard to bring you amazing learning experiences. Check
+          We&apos;re working hard to bring you amazing learning experiences. Check
           back soon for exciting new courses!
         </p>
       </div>

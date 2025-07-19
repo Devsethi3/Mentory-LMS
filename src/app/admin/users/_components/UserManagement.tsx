@@ -56,6 +56,7 @@ export function UserManagement({ users }: UserManagementProps) {
       // Refresh the page to show updated data
       window.location.reload();
     } catch (error) {
+      console.log(error);
       toast.error("Failed to update user role");
     } finally {
       setIsUpdating(null);

@@ -6,7 +6,18 @@ import TextAlign from "@tiptap/extension-text-align";
 
 import Menubar from "./Menubar";
 
-const RichTextEditor = ({ field }: { field: any }) => {
+interface FormField {
+  value: string | undefined;
+  onChange: (value: string) => void;
+  onBlur?: () => void;
+  name?: string;
+}
+
+interface RichTextEditorProps {
+  field: FormField;
+}
+
+const RichTextEditor = ({ field }: RichTextEditorProps) => {
   const editor = useEditor({
     extensions: [
       StarterKit,

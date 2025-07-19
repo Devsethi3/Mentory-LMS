@@ -45,6 +45,7 @@ export async function DELETE(request: Request) {
       { status: 200 }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Missing or invalid object key" },
       { status: 500 }

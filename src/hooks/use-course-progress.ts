@@ -2,9 +2,15 @@
 
 import { useMemo } from "react";
 import { CourseSidebarDataType } from "@/data/course/get-course-sidebar-data";
+import { EnrolledCourseType } from "@/data/user/get-enrolled-courses";
+
+// Create a union type that accepts both course data structures
+type CourseProgressData =
+  | CourseSidebarDataType["course"]
+  | EnrolledCourseType["Course"];
 
 interface useCourseProgressProps {
-  courseData: CourseSidebarDataType["course"];
+  courseData: CourseProgressData;
 }
 
 interface CourseProgressResult {
@@ -25,7 +31,6 @@ export function useCourseProgress({
         totalLessons++;
 
         // check if this lesson is completed;
-
         const isCompleted = lesson.lessonProgress.some(
           (progress) => progress.lessonId === lesson.id && progress.completed
         );

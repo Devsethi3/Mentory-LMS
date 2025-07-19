@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/provider/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 
-const font = Space_Grotesk();
+const font = Space_Grotesk({ subsets: ["latin"] }); 
 
 export const metadata: Metadata = {
   title: "Create Next App",
