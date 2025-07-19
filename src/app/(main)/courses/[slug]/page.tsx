@@ -50,10 +50,10 @@ const SlugPage = async ({ params }: { params: Params }) => {
 
           <div className="mt-8 space-y-6">
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight">
+              <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold tracking-tight">
                 {course.title}
               </h1>
-              <p className="text-lg text-muted-foreground leading-tight line-clamp-2 ">
+              <p className="lg:text-lg text-base text-muted-foreground leading-tight line-clamp-2 ">
                 {course.smallDescription}
               </p>
             </div>

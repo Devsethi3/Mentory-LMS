@@ -58,10 +58,7 @@ export async function enrollInCourseAction(
       };
     }
 
-    console.log("Course found:", {
-      id: course.id,
-      stripePriceId: course.stripePriceId,
-    });
+    console.log("stripePriceId", course.stripePriceId);
 
     // Validate that stripePriceId exists
     if (!course.stripePriceId) {
@@ -117,7 +114,7 @@ export async function enrollInCourseAction(
         return {
           status: "success",
           message: "You are already enrolled in this course.",
-          isAlreadyEnrolled: true,
+          // isAlreadyEnrolled: true,
         };
       }
 
@@ -143,8 +140,6 @@ export async function enrollInCourseAction(
         });
       }
 
-      console.log("Created/updated enrollment:", enrollment.id);
-
       // Create checkout session with proper metadata
       const checkoutSession = await stripe.checkout.sessions.create({
         customer: stripeCustomerId,
@@ -155,7 +150,7 @@ export async function enrollInCourseAction(
           },
         ],
         mode: "payment",
-        success_url: `${env.BETTER_AUTH_URL}/payment/success?courseId=${course.id}&enrollmentId=${enrollment.id}`,
+        success_url: `${env.BETTER_AUTH_URL}/payment/success?courseId=${course.id}`,
         cancel_url: `${env.BETTER_AUTH_URL}/payment/cancel?courseId=${course.id}`,
         metadata: {
           userId: user.id,
@@ -174,42 +169,28 @@ export async function enrollInCourseAction(
           address: "auto",
         },
         billing_address_collection: "auto",
-        // Set expires_at to 30 minutes from now (optional but recommended)
-        expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
       });
 
-      console.log("Created checkout session:", checkoutSession.id);
-
+      console.log("Enrollment",enrollment);
+      console.log("checkoutSession Url",checkoutSession.url);
+      
       return {
         enrollment: enrollment,
         checkoutUrl: checkoutSession.url,
-        isAlreadyEnrolled: false,
       };
     });
 
-    // If already enrolled, return success response without redirect
-    if (result.isAlreadyEnrolled) {
-      return {
-        status: "success",
-        message: "You are already enrolled in this course.",
-      };
-    }
+    // If already enrolled, return success response
+    // if (result.isAlreadyEnrolled) {
+    //   return result as ApiResponse;
+    // }
 
     checkoutUrl = result.checkoutUrl as string;
-
-    if (!checkoutUrl) {
-      return {
-        status: "error",
-        message: "Failed to create checkout session",
-      };
-    }
-
-    console.log("Redirecting to checkout:", checkoutUrl);
   } catch (error) {
     console.error("Error in enrollInCourseAction:", error);
 
     if (error instanceof Stripe.errors.StripeError) {
-      console.error("Stripe error:", error.message, error.type);
+      console.error("Stripe error:", error.message);
       return {
         status: "error",
         message: `Payment error: ${error.message}`,
@@ -222,6 +203,12 @@ export async function enrollInCourseAction(
     };
   }
 
-  // Only redirect if we have a valid checkout URL
+  if (!checkoutUrl) {
+    return {
+      status: "error",
+      message: "Failed to create checkout session",
+    };
+  }
+
   redirect(checkoutUrl);
 }
