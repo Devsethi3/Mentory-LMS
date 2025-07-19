@@ -1,46 +1,58 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { tryCatch } from "@/hooks/try-catch";
-import { useTransition } from "react";
+import { IconShoppingCart, IconLoader2 } from "@tabler/icons-react";
+import { useState } from "react";
+import { toast } from "sonner"; 
 import { enrollInCourseAction } from "../actions";
-import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
 
-const EnrollmentButton = ({ courseId }: { courseId: string }) => {
-  const [pending, startTransition] = useTransition();
+interface EnrollmentButtonProps {
+  courseId: string;
+}
 
-  function onSubmit() {
-    startTransition(async () => {
-      const { data: result, error } = await tryCatch(
-        enrollInCourseAction(courseId)
-      );
+const EnrollmentButton = ({ courseId }: EnrollmentButtonProps) => {
+  const [isLoading, setIsLoading] = useState(false);
 
-      if (error) {
-        toast.error("An unexpected error occured. Please try again.");
-      }
+  const handleEnrollment = async () => {
+    try {
+      setIsLoading(true);
 
-      if (result?.status === "success") {
-        toast.success(result.message);
-      } else if (result?.status === "error") {
+      const result = await enrollInCourseAction(courseId);
+
+      if (result?.status === "error") {
         toast.error(result.message);
+      } else if (result?.status === "success") {
+        toast.success(result.message);
       }
-    });
-  }
+      // Note: If successful and not already enrolled, the action will redirect to Stripe
+      // so this code after the action call might not execute
+    } catch (error) {
+      console.error("Enrollment error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <>
-      <Button className="w-full" disabled={pending} onClick={onSubmit}>
-        {pending ? (
-          <>
-            <Loader2 className="size-4 animate-spin" />
-            Loading...
-          </>
-        ) : (
-          "Enroll Now"
-        )}
-      </Button>
-    </>
+    <Button
+      onClick={handleEnrollment}
+      disabled={isLoading}
+      className="w-full"
+      size="lg"
+    >
+      {isLoading ? (
+        <>
+          <IconLoader2 className="size-4 animate-spin" />
+          Processing...
+        </>
+      ) : (
+        <>
+          <IconShoppingCart className="size-4" />
+          Enroll Now
+        </>
+      )}
+    </Button>
   );
 };
 
