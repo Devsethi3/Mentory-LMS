@@ -86,24 +86,41 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Nav Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border px-4 py-6 space-y-4">
-          <Link href="/" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </Link>
-          <Link href="/courses" onClick={() => setIsMenuOpen(false)}>
-            Courses
-          </Link>
-          <Link href="#blog" onClick={() => setIsMenuOpen(false)}>
-            Blog
-          </Link>
-          <Link href="#changelog" onClick={() => setIsMenuOpen(false)}>
-            Changelog
-          </Link>
+        <div className="md:hidden bg-background border-t border-border px-4 pb-6 pt-4 shadow-md">
+          <div className="space-y-2">
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-2 py-2 rounded-md hover:bg-muted transition"
+            >
+              Home
+            </Link>
+            <Link
+              href="/courses"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-2 py-2 rounded-md hover:bg-muted transition"
+            >
+              Courses
+            </Link>
+            <Link
+              href="#blog"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-2 py-2 rounded-md hover:bg-muted transition"
+            >
+              Blog
+            </Link>
+            <Link
+              href="#changelog"
+              onClick={() => setIsMenuOpen(false)}
+              className="block px-2 py-2 rounded-md hover:bg-muted transition"
+            >
+              Changelog
+            </Link>
+          </div>
 
           {!session && (
-            <div className="flex flex-col gap-2 pt-4">
+            <div className="mt-6 space-y-2">
               <Link
                 href="/login"
                 className={buttonVariants({
@@ -130,4 +147,3 @@ const Header = () => {
 };
 
 export default Header;
-
