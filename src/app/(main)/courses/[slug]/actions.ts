@@ -1,3 +1,5 @@
+// actions.ts
+
 "use server";
 
 import Stripe from "stripe";
@@ -25,12 +27,13 @@ export async function enrollInCourseAction(
 
   let checkoutUrl: string;
   try {
+    // Rate limiting check
     const req = await request();
     const decision = await aj.protect(req, {
       fingerprint: user.id,
     });
 
-    if (!decision.isDenied) {
+    if (decision.isDenied()) {
       return {
         status: "error",
         message:
@@ -38,6 +41,7 @@ export async function enrollInCourseAction(
       };
     }
 
+    // Get course with stripePriceId
     const course = await prisma.course.findUnique({
       where: { id: courseId },
       select: {
@@ -45,6 +49,7 @@ export async function enrollInCourseAction(
         title: true,
         price: true,
         slug: true,
+        stripePriceId: true,
       },
     });
 
@@ -55,15 +60,22 @@ export async function enrollInCourseAction(
       };
     }
 
-    let stripeCustomerId;
+    console.log("stripePriceId", course.stripePriceId);
+
+    // Validate that stripePriceId exists
+    if (!course.stripePriceId) {
+      return {
+        status: "error",
+        message: "Course pricing not configured properly",
+      };
+    }
+
+    // Handle Stripe customer creation/retrieval
+    let stripeCustomerId: string;
 
     const userWithStripeCustomerId = await prisma.user.findUnique({
-      where: {
-        id: user.id,
-      },
-      select: {
-        stripeCustomerId: true,
-      },
+      where: { id: user.id },
+      select: { stripeCustomerId: true },
     });
 
     if (userWithStripeCustomerId?.stripeCustomerId) {
@@ -80,15 +92,12 @@ export async function enrollInCourseAction(
       stripeCustomerId = customer.id;
 
       await prisma.user.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          stripeCustomerId: stripeCustomerId,
-        },
+        where: { id: user.id },
+        data: { stripeCustomerId: stripeCustomerId },
       });
     }
 
+    // Use transaction for enrollment and checkout session creation
     const result = await prisma.$transaction(async (tx) => {
       const existingEnrollment = await tx.enrollment.findUnique({
         where: {
@@ -107,6 +116,7 @@ export async function enrollInCourseAction(
         return {
           status: "success",
           message: "You are already enrolled in this course.",
+          // isAlreadyEnrolled: true,
         };
       }
 
@@ -114,9 +124,7 @@ export async function enrollInCourseAction(
 
       if (existingEnrollment) {
         enrollment = await tx.enrollment.update({
-          where: {
-            id: existingEnrollment.id,
-          },
+          where: { id: existingEnrollment.id },
           data: {
             amount: course.price,
             status: "Pending",
@@ -134,12 +142,12 @@ export async function enrollInCourseAction(
         });
       }
 
+      // Create checkout session with proper metadata
       const checkoutSession = await stripe.checkout.sessions.create({
         customer: stripeCustomerId,
-        // Todo: fix this price id
         line_items: [
           {
-            price: "price_1Rl5IgRvnhV8Z0znnhidFSYl",
+            price: course.stripePriceId,
             quantity: 1,
           },
         ],
@@ -151,6 +159,18 @@ export async function enrollInCourseAction(
           courseId: course.id,
           enrollmentId: enrollment.id,
         },
+        // Additional options for better UX
+        payment_intent_data: {
+          metadata: {
+            userId: user.id,
+            courseId: course.id,
+            enrollmentId: enrollment.id,
+          },
+        },
+        customer_update: {
+          address: "auto",
+        },
+        billing_address_collection: "auto",
       });
 
       return {
@@ -159,18 +179,33 @@ export async function enrollInCourseAction(
       };
     });
 
+    // If already enrolled, return success response
+    // if (result.isAlreadyEnrolled) {
+    //   return result as ApiResponse;
+    // }
+
     checkoutUrl = result.checkoutUrl as string;
   } catch (error) {
+    console.error("Error in enrollInCourseAction:", error);
+
     if (error instanceof Stripe.errors.StripeError) {
+      console.error("Stripe error:", error.message);
       return {
         status: "error",
-        message: "Stripe error occurred",
+        message: `Payment error: ${error.message}`,
       };
     }
-    console.error("Error enrolling in course:", error);
+
     return {
       status: "error",
       message: "An error occurred while enrolling in the course.",
+    };
+  }
+
+  if (!checkoutUrl) {
+    return {
+      status: "error",
+      message: "Failed to create checkout session",
     };
   }
 

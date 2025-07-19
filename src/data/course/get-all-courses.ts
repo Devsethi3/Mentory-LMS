@@ -8,7 +8,7 @@ export async function getAllCourses() {
       status: "Published",
     },
     orderBy: {
-      createAt: "desc",
+      createdAt: "desc",
     },
     select: {
       title: true,

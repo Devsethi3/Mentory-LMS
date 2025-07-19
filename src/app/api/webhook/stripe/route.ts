@@ -1,8 +1,8 @@
-import { prisma } from "@/lib/db";
+import Stripe from "stripe";
 import { env } from "@/lib/env";
 import { stripe } from "@/lib/stripe";
 import { headers } from "next/headers";
-import Stripe from "stripe";
+import { prisma } from "@/lib/db";
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -19,10 +19,7 @@ export async function POST(req: Request) {
       env.STRIPE_WEBHOOK_SECRET
     );
   } catch (error) {
-    throw new Response("Webhook Error", {
-      status: 400,
-      statusText: "Webhook Error",
-    });
+    return new Response("Webhook error", { status: 400 });
   }
 
   const session = event.data.object as Stripe.Checkout.Session;
@@ -32,7 +29,7 @@ export async function POST(req: Request) {
     const customerId = session.customer as string;
 
     if (!courseId) {
-      throw new Response("Course ID not found in session metadata");
+      throw new Error("Course Id not found...");
     }
 
     const user = await prisma.user.findUnique({
@@ -42,7 +39,7 @@ export async function POST(req: Request) {
     });
 
     if (!user) {
-      throw new Response("User not found for the provided customer ID");
+      throw new Error("User not found...");
     }
 
     await prisma.enrollment.update({
@@ -58,5 +55,5 @@ export async function POST(req: Request) {
     });
   }
 
-  return new Response(null, {status: 200})
+  return new Response(null, { status: 200 });
 }

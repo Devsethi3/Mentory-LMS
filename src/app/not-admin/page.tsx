@@ -66,12 +66,12 @@ const NotAdminPage = () => {
                     If you believe you should have admin privileges, please
                     contact your administrator.
                   </p>
-                  {/* <Button asChild variant="outline" size="sm">
+                  <Button asChild variant="outline" size="sm">
                     <Link href="/contact">
                       <Mail className="mr-2 size-3" />
                       Contact Support
                     </Link>
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
             </div>

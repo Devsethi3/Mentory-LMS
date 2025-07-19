@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckIcon } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { checkIfCourseBought } from "@/data/user/user-is-enrolled";
 import Link from "next/link";
 import EnrollmentButton from "./_components/EnrollmentButton";
@@ -31,6 +31,7 @@ const SlugPage = async ({ params }: { params: Params }) => {
   const { slug } = await params;
   const course = await getIndividualCourse(slug);
   const isEnrolled = await checkIfCourseBought(course.id);
+  
   return (
     <>
       <Header />
@@ -42,8 +43,9 @@ const SlugPage = async ({ params }: { params: Params }) => {
               alt=""
               fill
               priority
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-green-500/20" />
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-green-500/20" /> */}
           </div>
 
           <div className="mt-8 space-y-6">

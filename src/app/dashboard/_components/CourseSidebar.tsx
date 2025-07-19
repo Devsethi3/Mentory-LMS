@@ -11,6 +11,7 @@ import { CourseSidebarDataType } from "@/data/course/get-course-sidebar-data";
 import { ChevronDown, Play } from "lucide-react";
 import LessonItem from "./LessonItem";
 import { usePathname } from "next/navigation";
+import { useCourseProgress } from "@/hooks/use-course-progress";
 
 interface CourseSidebarProps {
   course: CourseSidebarDataType["course"];
@@ -19,6 +20,10 @@ interface CourseSidebarProps {
 const CourseSidebar = ({ course }: CourseSidebarProps) => {
   const pathname = usePathname();
   const currentLessonId = pathname.split("/").pop();
+
+  const { completedLessons, progressPercentage, totalLessons } =
+    useCourseProgress({ courseData: course });
+
   return (
     <div className="flex flex-col h-full">
       <div className="pb-4 pr-4 border-b border-border">
@@ -40,10 +45,14 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
             <span className="text-muted-foreground">Progress</span>
-            <span className="font-medium">4/10 lessons</span>
+            <span className="font-medium">
+              {completedLessons}/{totalLessons} lessons
+            </span>
           </div>
-          <Progress value={55} className="h-1.5" />
-          <p className="text-xs text-muted-foreground">55% complete</p>
+          <Progress value={progressPercentage} className="h-1.5" />
+          <p className="text-xs text-muted-foreground">
+            {progressPercentage}% complete
+          </p>
         </div>
       </div>
 

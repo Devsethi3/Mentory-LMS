@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 
-const font = DM_Sans();
+const font = Space_Grotesk();
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -8,7 +8,7 @@ export async function adminGetCourses() {
 
   const data = await prisma.course.findMany({
     orderBy: {
-      createAt: "desc",
+      createdAt: "desc",
     },
     select: {
       id: true,

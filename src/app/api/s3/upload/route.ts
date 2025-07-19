@@ -8,7 +8,7 @@ import z from "zod";
 import arcjet, { fixedWindow } from "@/lib/arcjet";
 import { requireAdmin } from "@/data/admin/require-admin";
 
-export const fileUploadSchema = z.object({
+const fileUploadSchema = z.object({
   fileName: z.string().min(1, { message: "File name is required" }),
   contentType: z.string().min(1, { message: "Content type is required" }),
   size: z.number().min(1, { message: "File size is required" }),
