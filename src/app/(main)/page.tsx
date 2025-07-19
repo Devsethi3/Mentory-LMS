@@ -48,12 +48,10 @@ const HomePage = () => {
           </div>
           <div className="flex items-start justify-center px-8 sm:px-24">
             <div className="flex pt-10 w-full gap-10 max-w-[80vw] flex-wrap jc items-center justify-center md:!max-w-[392px]">
-              <Button
-                className="rounded-none text-lg h-14 w-40"
-              >
+              <Button className="rounded-none text-base h-12">
                 Get Started
               </Button>
-              <Button variant="outline" className="rounded-none md:block hidden text-lg h-14 w-40">
+              <Button variant="outline" className="text-base h-12">
                 Watch Demo
               </Button>
             </div>
