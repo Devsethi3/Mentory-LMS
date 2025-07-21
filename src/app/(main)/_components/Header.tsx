@@ -30,16 +30,16 @@ const Header = () => {
           <Link href="/courses" className="hover:text-primary transition">
             Courses
           </Link>
-          <Link href="#blog" className="hover:text-primary transition">
+          <Link href="/blog" className="hover:text-primary transition">
             Blog
           </Link>
-          <Link href="#changelog" className="hover:text-primary transition">
+          <Link href="/changelog" className="hover:text-primary transition">
             Changelog
           </Link>
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center lg:gap-4 gap-3">
           <ThemeToggle />
           {isPending ? null : session ? (
             <UserDropdown
