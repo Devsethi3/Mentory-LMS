@@ -3,6 +3,7 @@
 import Features from "@/app/(main)/_components/Features";
 import Header from "@/app/(main)/_components/Header";
 import { Button } from "@/components/ui/button";
+import { Footer } from "./_components/Footer";
 
 const HomePage = () => {
   return (
@@ -40,9 +41,8 @@ const HomePage = () => {
                 Streamlined Communication for Iterating Fast
               </h1>
               <h2 className="text-md mt-6 max-w-2xl text-pretty text-center text-[--text-tertiary] dark:text-[--dark-text-tertiary] md:text-lg">
-                A self-hosted learning platform to discover, purchase, and
-                master courses from expert instructors. Designed for individuals
-                and teams to grow faster through modern learning experiences.
+                A self-hosted platform to discover, buy, and master expert-led
+                courses—designed to help individuals and teams grow faster.
               </h2>
             </div>
           </div>
@@ -58,6 +58,7 @@ const HomePage = () => {
       </section>
 
       <Features />
+      <Footer />
     </>
   );
 };
