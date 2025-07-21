@@ -1,4 +1,3 @@
-// get-all-course.ts
 import "server-only";
 
 import { prisma } from "@/lib/db";

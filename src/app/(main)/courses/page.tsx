@@ -10,7 +10,7 @@ const PublicCoursePage = () => {
   return (
     <>
       <Header />
-      <div className="mt-24 container">
+      <div className="mt-24 mb-10 container">
         <Suspense fallback={<LoadingSkeletonLayout />}>
           <RenderCourses />
         </Suspense>

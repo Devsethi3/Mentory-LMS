@@ -35,7 +35,7 @@ const SlugPage = async ({ params }: { params: Params }) => {
   return (
     <>
       <Header />
-      <div className="grid my-24 container grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="grid mt-24 mb-10 container grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="order-1 lg:col-span-2">
           <div className="relative aspect-video w-full overflow-hidden rounded-xl shadow-lg">
             <Image

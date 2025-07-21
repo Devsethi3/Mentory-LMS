@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <section className="relative min-h-[calc(630px-var(--header-height))] overflow-hidden lg:py-32 py-20 bg-gradient-to-t from-yellow-700/10 to-background">
+      <section className="relative min-h-[calc(630px-var(--header-height))] overflow-hidden lg:py-32 py-20 bg-gradient-to-t from-primary/10 to-background">
         <div className="absolute left-0 top-0 z-0 grid h-full w-full grid-cols-[clamp(28px,10vw,120px)_auto_clamp(28px,10vw,120px)] border-b border-[--border] dark:border-[--dark-border]">
           {/* Decorations */}
           <div className="col-span-1 flex h-full items-center justify-center" />
@@ -40,17 +40,15 @@ const HomePage = () => {
                 Streamlined Communication for Iterating Fast
               </h1>
               <h2 className="text-md mt-6 max-w-2xl text-pretty text-center text-[--text-tertiary] dark:text-[--dark-text-tertiary] md:text-lg">
-                Acme is an installable, self-hosted team chat system. You can
-                have several paragraphs in here and the thing will wrap
-                gracefully.
+                A self-hosted learning platform to discover, purchase, and
+                master courses from expert instructors. Designed for individuals
+                and teams to grow faster through modern learning experiences.
               </h2>
             </div>
           </div>
           <div className="flex items-start justify-center px-8 sm:px-24">
             <div className="flex pt-10 w-full gap-10 max-w-[80vw] flex-wrap jc items-center justify-center md:!max-w-[392px]">
-              <Button className="rounded-none text-base h-12">
-                Get Started
-              </Button>
+              <Button className="text-base h-12">Get Started</Button>
               <Button variant="outline" className="text-base h-12">
                 Watch Demo
               </Button>

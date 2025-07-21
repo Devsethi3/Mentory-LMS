@@ -1,21 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button, buttonVariants } from "../../../components/ui/button";
 import Image from "next/image";
 import { ThemeToggle } from "../../../components/ui/theme-toggle";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { UserDropdown } from "./UserDropdown";
-import { cn } from "@/lib/utils";
 
 const Header = () => {
   const { data: session, isPending } = authClient.useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b">
+    <header className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b">
       <div className="container py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
@@ -87,7 +86,7 @@ const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-border px-4 pb-6 pt-4 shadow-md">
+        <div className="md:hidden bg-background/80 backdrop-blur-md border-t border-border px-4 pb-6 pt-4 shadow-md">
           <div className="space-y-2">
             <Link
               href="/"
