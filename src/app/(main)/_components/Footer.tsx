@@ -25,15 +25,15 @@ export function Footer() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="border-t border-muted bg-secondary text-muted-foreground"
+      className="border-t border-muted text-muted-foreground"
     >
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo and Social */}
         <div className="col-span-1 space-y-4">
           <Link href="/" className="text-xl font-bold text-primary">
-            YourAgency
+            Mentory LMS
           </Link>
-          <p className="text-sm text-muted">
+          <p className="text-sm text-muted-foreground">
             We craft modern web experiences that drive results.
           </p>
           <div className="flex gap-4 pt-2">
