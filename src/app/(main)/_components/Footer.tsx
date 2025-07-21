@@ -75,8 +75,8 @@ export function Footer() {
       </div>
 
       {/* Bottom section */}
-      <div className="border-t border-muted text-xs text-muted text-center py-6 px-4">
-        © {new Date().getFullYear()} YourAgency. All rights reserved.
+      <div className="border-t border-muted text-xs text-muted-foreground text-center py-6 px-4">
+        © {new Date().getFullYear()} Mentory LMS. All rights reserved.
       </div>
     </motion.footer>
   );
