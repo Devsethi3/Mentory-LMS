@@ -113,32 +113,33 @@ export default AdminCourseCard;
 
 export function AdminCourseCardSkeleton() {
   return (
-    <Card className="group relative py-0 gap-0 rounded-lg">
+    <Card className="group relative py-0 gap-0 rounded-lg w-full">
       <div className="absolute top-2 right-2 z-10">
         <Skeleton className="w-8 h-8 rounded-md" />
       </div>
 
-      <Skeleton className="w-full rounded-t-lg aspect-video h-full" />
+      {/* Responsive thumbnail skeleton */}
+      <Skeleton className="w-full aspect-video rounded-t-lg object-cover" />
 
-      <CardContent className="py-6">
-        <Skeleton className="h-6 w-full mb-2" />
-        <Skeleton className="h-6 w-3/4 mb-4" />
+      <CardContent className="py-6 space-y-3">
+        <Skeleton className="h-6 w-full sm:w-3/4" />
+        <Skeleton className="h-5 w-5/6 sm:w-2/3" />
 
-        <Skeleton className="h-4 w-full mb-2" />
-        <Skeleton className="h-4 w-2/3 mb-4" />
+        <Skeleton className="h-4 w-full sm:w-3/4" />
+        <Skeleton className="h-4 w-2/3 sm:w-1/2" />
 
-        <div className="mt-4 flex items-center gap-x-5">
-          <div className="gap-x-2 flex items-center">
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <div className="flex items-center gap-x-2">
             <Skeleton className="size-4 rounded-md" />
-            <Skeleton className="h-4 w-12" />
+            <Skeleton className="h-4 w-14 sm:w-16" />
           </div>
-          <div className="gap-x-2 flex items-center">
+          <div className="flex items-center gap-x-2">
             <Skeleton className="size-4 rounded-md" />
-            <Skeleton className="h-4 w-16" />
+            <Skeleton className="h-4 w-20 sm:w-24" />
           </div>
         </div>
 
-        <Skeleton className="w-full h-10 mt-2 rounded-md" />
+        <Skeleton className="w-full h-10 mt-3 rounded-md" />
       </CardContent>
     </Card>
   );
