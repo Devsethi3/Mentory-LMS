@@ -49,7 +49,7 @@ const Header = () => {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center lg:gap-4 gap-3">
+        <div className="flex items-center lg:gap-4 gap-2">
           <ThemeToggle />
           {isPending ? null : session ? (
             <UserDropdown

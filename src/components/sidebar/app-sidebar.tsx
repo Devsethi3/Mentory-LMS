@@ -135,9 +135,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <Link href="/">
-                <Image src="/logo.svg" alt="logo" width={35} height={35} />
-                <span className="text-base font-semibold">Mentory</span>
+              <Link href="/" className="flex items-center space-x-2">
+                <div className="relative">
+                  <Image
+                    src="/logo.svg"
+                    width={35}
+                    height={35}
+                    alt="Mentory LMS logo"
+                    className="group-hover:scale-105 transition-transform duration-200"
+                  />
+                  {/* Glow effect for dark mode */}
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
+                </div>
+                <span className="text-lg font-bold">Mentory LMS</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

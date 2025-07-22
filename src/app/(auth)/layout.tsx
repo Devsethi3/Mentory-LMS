@@ -17,13 +17,22 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         Back
       </Link>
       <div className="flex w-full max-w-sm flex-col gap-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2 self-center font-medium text-lg"
-        >
-          <Image src="/logo.svg" width={42} height={42} alt="logo" />
-          Mentory LMS
+        {/* Logo */}
+        <Link href="/" className="flex items-center justify-center space-x-2">
+          <div className="relative">
+            <Image
+              src="/logo.svg"
+              width={38}
+              height={38}
+              alt="Mentory LMS logo"
+              className="group-hover:scale-105 transition-transform duration-200"
+            />
+            {/* Glow effect for dark mode */}
+            <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
+          </div>
+          <span className="text-xl font-bold">Mentory LMS</span>
         </Link>
+
         {children}
 
         <div className="text-balance text-center text-xs text-muted-foreground">

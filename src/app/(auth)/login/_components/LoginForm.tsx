@@ -113,7 +113,11 @@ const LoginForm = () => {
                 placeholder="m@example.com"
               />
             </div>
-            <Button onClick={signInWithEmail} disabled={emailPending}>
+            <Button
+              onClick={signInWithEmail}
+              disabled={emailPending || !email}
+              className="w-full"
+            >
               {emailPending ? (
                 <>
                   <Loader2 className="size-4 animate-spin" />
