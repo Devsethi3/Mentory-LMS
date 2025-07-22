@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b">
-      <div className="container py-4 flex items-center justify-between">
+      <div className="container lg:py-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <div className="relative">
@@ -29,7 +29,7 @@ const Header = () => {
             {/* Glow effect for dark mode */}
             <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
           </div>
-          <span className="text-xl font-bold">Mentory</span>
+          <span className="lg:text-xl text-lg font-bold">Mentory</span>
         </Link>
 
         {/* Desktop Nav */}

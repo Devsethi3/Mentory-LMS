@@ -91,7 +91,7 @@ export const SolutionsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="lg:text-4xl text-3xl font-bold text-foreground mb-6">
+          <h2 className="lg:text-4xl text-3xl font-semibold text-foreground mb-6">
             Tailored solutions for every need
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -117,7 +117,7 @@ export const SolutionsSection = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
                   <solution.icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
+                <h3 className="text-2xl font-semibold text-foreground mb-4">
                   {solution.title}
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">

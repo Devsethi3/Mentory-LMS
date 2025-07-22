@@ -7,6 +7,7 @@ import { Footer } from "./_components/Footer";
 import { SolutionsSection } from "./_components/FeatureSection";
 import TestimonialSection from "./_components/TestimonialSection";
 import DisplayCardsSection from "./_components/DisplayCardSection";
+import { ArrowBigDownDashIcon, ArrowBigRightDashIcon } from "lucide-react";
 
 const HomePage = () => {
   return (
@@ -51,7 +52,7 @@ const HomePage = () => {
           </div>
           <div className="flex items-start justify-center px-8 sm:px-24">
             <div className="flex pt-10 w-full gap-10 max-w-[80vw] flex-wrap jc items-center justify-center md:!max-w-[392px]">
-              <Button className="text-base h-12">Get Started</Button>
+              <Button className="text-base lg:h-12 h-10">Get Started <ArrowBigRightDashIcon /></Button>
               <Button
                 variant="outline"
                 className="text-base h-12 lg:block hidden"

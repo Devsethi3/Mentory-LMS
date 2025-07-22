@@ -34,7 +34,7 @@ const Features = () => {
       <section id="features" className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="lg:text-4xl text-3xl font-semibold mb-4">
               Enhanced Team Communication
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -70,7 +70,7 @@ const Features = () => {
               <Badge className="mb-4 bg-green-500/10 text-green-400 border-green-500/20">
                 New Feature
               </Badge>
-              <h3 className="text-3xl font-bold mb-4">Real-Time Messaging</h3>
+              <h3 className="text-3xl font-semibold mb-4">Real-Time Messaging</h3>
               <p className="text-muted-foreground mb-6">
                 Stay connected with your team through instant messaging, file
                 sharing, and real-time notifications. Never miss an important
