@@ -136,50 +136,6 @@ export const FeaturesSection = () => {
   );
 };
 
-// Stats Section
-export const StatsSection = () => {
-  const stats = [
-    { number: "50K+", label: "Active Learners", icon: Users },
-    { number: "1,200+", label: "Expert Courses", icon: BookOpen },
-    { number: "98%", label: "Completion Rate", icon: TrendingUp },
-    { number: "500+", label: "Enterprise Clients", icon: Building2 },
-  ];
-
-  return (
-    <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={fadeInUp}
-              className="text-center group"
-            >
-              <div className="mb-4 flex justify-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                  <stat.icon className="w-8 h-8 text-primary" />
-                </div>
-              </div>
-              <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">
-                {stat.number}
-              </div>
-              <div className="text-muted-foreground font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-};
-
 // Solutions Section
 export const SolutionsSection = () => {
   const solutions = [

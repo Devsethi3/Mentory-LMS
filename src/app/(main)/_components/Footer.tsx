@@ -88,7 +88,8 @@ export function Footer() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 dark:from-slate-950 dark:via-slate-800 dark:to-slate-950 text-slate-700 dark:text-slate-300 overflow-hidden border-t"
+      // className="relative bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 dark:from-slate-950 dark:via-slate-800 dark:to-slate-950 text-slate-700 dark:text-slate-300 overflow-hidden border-t"
+      className="relative bg-gradient-to-br from-primary/5 overflow-hidden border-t"
     >
       {/* Background Pattern - Adaptive to theme */}
 
