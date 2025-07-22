@@ -18,7 +18,17 @@ const Header = () => {
       <div className="container py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.svg" alt="logo" width={38} height={38} />
+          <div className="relative">
+            <Image
+              src="/logo.svg"
+              width={38}
+              height={38}
+              alt="Mentory LMS logo"
+              className="group-hover:scale-105 transition-transform duration-200"
+            />
+            {/* Glow effect for dark mode */}
+            <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
+          </div>
           <span className="text-xl font-bold">Mentory</span>
         </Link>
 

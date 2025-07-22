@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
+import { IconBrandGoogle } from "@tabler/icons-react";
 import { EarthIcon, GithubIcon, Loader2, Send } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState, useTransition } from "react";
@@ -33,7 +34,7 @@ const LoginForm = () => {
           },
           onError: (error) => {
             console.log(error);
-            
+
             toast.error("Internal Server Error");
           },
         },
@@ -53,7 +54,7 @@ const LoginForm = () => {
           },
           onError: (error) => {
             console.log(error);
-            
+
             toast.error("Internal Server Error");
           },
         },
@@ -91,7 +92,7 @@ const LoginForm = () => {
             )}
           </Button>
           <Button className="w-full" variant="outline">
-            <EarthIcon className="size-4" />
+            <IconBrandGoogle className="size-4" />
             Sign in with Google
           </Button>
 

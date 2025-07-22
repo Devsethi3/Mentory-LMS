@@ -1,11 +1,10 @@
-import { Loader2 } from "lucide-react";
-import React from "react";
+import { MorphingSquare } from "@/components/ui/morphing-square";
 
 const LoadingPage = () => {
   return (
     <div>
       <div className="flex items-center justify-center w-full h-screen">
-        <Loader2 className="animate-spin" size={24} />
+        <MorphingSquare message="Loading..." />
       </div>
     </div>
   );
