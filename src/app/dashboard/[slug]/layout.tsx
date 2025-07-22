@@ -14,7 +14,7 @@ const CourseLayout = async ({ params, children }: CourseLayoutProps) => {
   const course = await getCourseSidebarData(slug);
   return (
     <>
-      <div className="flex flex-1">
+      <div className="flex flex-1 lg:flex-row flex-col h-full overflow-hidden">
         {/* Sidebar - 30% */}
         <div className="w-80 border-r border-border shrink-0">
           <CourseSidebar course={course.course} />

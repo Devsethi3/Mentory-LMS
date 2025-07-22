@@ -77,7 +77,7 @@ const CourseContent = ({ data }: CourseContentProps) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-background pl-6">
+    <div className="flex flex-col h-full bg-background lg:pl-6 pl-0">
       <VideoPlayer
         thumbnailKey={data.thumbnailKey ?? ""}
         videoKey={data.videoKey ?? ""}
