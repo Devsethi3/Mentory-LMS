@@ -90,8 +90,8 @@ export function UserDropdown({ name, email, image }: UserDropdownProps) {
               href="/"
               className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-md cursor-pointer hover:bg-muted/80 focus:bg-muted/80 transition-colors"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50">
-                <Home size={16} className="text-blue-600 dark:text-blue-400" />
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                <Home size={16} className="text-primary" />
               </div>
               <div className="flex flex-col">
                 <span className="font-medium">Home</span>
@@ -107,11 +107,8 @@ export function UserDropdown({ name, email, image }: UserDropdownProps) {
               href="/courses"
               className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-md cursor-pointer hover:bg-muted/80 focus:bg-muted/80 transition-colors"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-green-50 dark:bg-green-950/50">
-                <BookIcon
-                  size={16}
-                  className="text-green-600 dark:text-green-400"
-                />
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                <BookIcon size={16} className="text-primary" />
               </div>
               <div className="flex flex-col">
                 <span className="font-medium">Courses</span>
@@ -127,11 +124,8 @@ export function UserDropdown({ name, email, image }: UserDropdownProps) {
               href="/admin"
               className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-md cursor-pointer hover:bg-muted/80 focus:bg-muted/80 transition-colors"
             >
-              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/50">
-                <LayoutDashboardIcon
-                  size={16}
-                  className="text-purple-600 dark:text-purple-400"
-                />
+              <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10">
+                <LayoutDashboardIcon size={16} className="text-primary" />
               </div>
               <div className="flex flex-col">
                 <span className="font-medium">Dashboard</span>

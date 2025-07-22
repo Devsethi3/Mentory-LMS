@@ -4,10 +4,7 @@ import Features from "@/app/(main)/_components/Features";
 import Header from "@/app/(main)/_components/Header";
 import { Button } from "@/components/ui/button";
 import { Footer } from "./_components/Footer";
-import {
-  FeaturesSection,
-  SolutionsSection,
-} from "./_components/FeatureSection";
+import { SolutionsSection } from "./_components/FeatureSection";
 import TestimonialSection from "./_components/TestimonialSection";
 import DisplayCardsSection from "./_components/DisplayCardSection";
 
@@ -68,7 +65,6 @@ const HomePage = () => {
 
       <Features />
       <DisplayCardsSection />
-      <FeaturesSection />
 
       <SolutionsSection />
       <TestimonialSection />
