@@ -85,12 +85,12 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
           </p>
 
           <div className="mt-4 flex items-center gap-x-5">
-            <div className="gap-x-2 flex items-center">
-              <TimerIcon className="size-4 p-1 rounded-md text-primary bg-primary/10" />
+            <div className="flex items-center gap-x-2">
+              <TimerIcon className="size-6 p-1 rounded-md text-primary bg-primary/10" />
               <p className="text-sm text-muted-foreground">{data.duration}</p>
             </div>
-            <div className="gap-x-2 flex items-center">
-              <School className="size-4 p-1 rounded-md text-primary bg-primary/10" />
+            <div className="flex items-center gap-x-2">
+              <School className="size-6 p-1 rounded-md text-primary bg-primary/10" />
               <p className="text-sm text-muted-foreground">{data.level}</p>
             </div>
           </div>
