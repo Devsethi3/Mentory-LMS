@@ -37,7 +37,7 @@ const mentoryCards = [
 
 const DisplayCardsSection = () => {
   return (
-    <div className="bg-background min-h-[70vh] pb-24 overflow-x-hidden">
+    <div className="relative bg-gradient-to-br from-primary/10 min-h-[70vh] pb-24 overflow-x-hidden">
       {/* Main Content Section */}
       <div className="container mx-auto px-6 py-16">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -99,7 +99,7 @@ const DisplayCardsSection = () => {
 
           {/* Right Column - Display Cards */}
           <motion.div
-            className="w-full lg:w-[55%]"
+            className="w-full lg:w-[55%] lg:block"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}

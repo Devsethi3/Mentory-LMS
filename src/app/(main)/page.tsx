@@ -52,10 +52,11 @@ const HomePage = () => {
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-green-400 to-blue-500 border-2 border-black"></div>
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-black"></div>
                 </div>
-                1,389 Happy Customers.
+               Join the Community ✨
               </div>
             </div>
           </div>
+
 
           {/* Heading and Subheading */}
           <div>
