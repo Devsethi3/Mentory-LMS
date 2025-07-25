@@ -56,10 +56,10 @@ const HomePage = () => {
                 </div>
                 Join the Community ✨
               </div> */}
-              <h1 className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto p-3 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 w-fit">
-                ✨ Welcome to Mentory
+              <p className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto p-3 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 w-fit">
+                ✨ Your Learning Hub
                 <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
-              </h1>
+              </p>
             </div>
           </div>
 
