@@ -9,6 +9,7 @@ import TestimonialSection from "./_components/TestimonialSection";
 import DisplayCardsSection from "./_components/DisplayCardSection";
 import { motion } from "motion/react";
 import { MdArrowOutward } from "react-icons/md";
+import { ChevronRight } from "lucide-react";
 
 const HomePage = () => {
   return (
@@ -42,21 +43,25 @@ const HomePage = () => {
           className="pointer-events-none absolute bottom-[-50px] right-[7vw] z-20 hidden aspect-square w-[30vw] rounded-full bg-[--surface-primary] blur-[100px] dark:bg-[--dark-surface-primary] md:block"
         />
 
-        <div className="relative z-10 flex flex-col divide-y divide-[--border] pt-[35px] dark:divide-[--dark-border]">
+        <div className="relative z-10 flex flex-col divide-y divide-[--border] pt-[10px] dark:divide-[--dark-border]">
           {/* Avatar */}
           <div className="flex flex-col items-center justify-end">
-            <div className="flex items-center gap-2 !border !border-b-0 border-[--border] px-4 py-2 dark:border-[--dark-border]">
-              <div className="text-sm tracking-tight text-[--text-tertiary] dark:text-[--dark-text-tertiary] flex items-center gap-4">
+            {/* className="!border !border-b-0 border-[--border] px-4 py-2 dark:border-[--dark-border]" */}
+            <div className="flex items-center gap-2">
+              {/* <div className="text-sm tracking-tight text-[--text-tertiary] dark:text-[--dark-text-tertiary] flex items-center gap-4">
                 <div className="flex -space-x-2">
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 border-2 border-black"></div>
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-green-400 to-blue-500 border-2 border-black"></div>
                   <div className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-black"></div>
                 </div>
-               Join the Community ✨
-              </div>
+                Join the Community ✨
+              </div> */}
+              <h1 className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto p-3 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 w-fit">
+                ✨ Welcome to Mentory
+                <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
+              </h1>
             </div>
           </div>
-
 
           {/* Heading and Subheading */}
           <div>
@@ -65,7 +70,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="!max-w-screen-lg text-pretty text-center text-[clamp(32px,7vw,64px)] font-medium leading-none tracking-[-1.44px] text-[--text-primary] dark:text-[--dark-text-primary] md:tracking-[-2.16px]"
+                className="text-4xl text-center tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl lg:text-7xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]"
               >
                 {/* Your Hub for Iterative Learning & Rapid Skill Development */}
                 Self-Hosted Learning Built for High Performers
@@ -75,7 +80,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-md mt-6 max-w-2xl text-pretty text-center text-[--text-tertiary] dark:text-[--dark-text-tertiary] md:text-lg"
+                className="text-transparent text-center mt-5 bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-200 lg:text-2xl md:text-lg text-base max-w-3xl"
               >
                 A self-hosted platform to discover, buy, and master expert-led
                 courses—designed to help individuals and teams grow faster.
@@ -99,7 +104,7 @@ const HomePage = () => {
                 Request Demo
               </Button>
               <Button
-                className="w-full lg:py-7 py-6 bg-[#9560EB] hover:bg-[#7b49db] font-normal lg:text-lg text-base"
+                className="w-full lg:py-7 py-6 font-normal lg:text-lg text-base"
                 size="lg"
               >
                 Get Started
