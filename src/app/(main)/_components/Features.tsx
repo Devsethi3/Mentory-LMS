@@ -1,4 +1,10 @@
-import { BarChart3, Calendar, CheckCircle, MessageSquare, Shield } from "lucide-react";
+import {
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  MessageSquare,
+  Shield,
+} from "lucide-react";
 import { Card, CardContent } from "../../../components/ui/card";
 import { Badge } from "../../../components/ui/badge";
 
@@ -62,54 +68,6 @@ const Features = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Feature Showcase */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge className="mb-4 bg-green-500/10 text-green-400 border-green-500/20">
-                New Feature
-              </Badge>
-              <h3 className="text-3xl font-semibold mb-4">Real-Time Messaging</h3>
-              <p className="text-muted-foreground mb-6">
-                Stay connected with your team through instant messaging, file
-                sharing, and real-time notifications. Never miss an important
-                update again.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Instant notifications</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>File sharing & collaboration</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Thread-based conversations</span>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-2xl p-8 border border-border">
-              <div className="bg-card rounded-lg p-4 space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-primary rounded-full"></div>
-                  <div>
-                    <div className="font-medium">Sarah Chen</div>
-                    <div className="text-sm text-muted-foreground">
-                      2 min ago
-                    </div>
-                  </div>
-                </div>
-                <p className="text-sm">
-                  Just finished the Q4 presentation. Ready for review! 📊
-                </p>
-                <div className="bg-muted/50 rounded p-2 text-xs">
-                  📎 Q4-Presentation-Final.pptx
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

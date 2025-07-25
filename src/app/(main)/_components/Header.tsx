@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button, buttonVariants } from "../../../components/ui/button";
 import Image from "next/image";
-import { ThemeToggle } from "../../../components/ui/theme-toggle";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { UserDropdown } from "./UserDropdown";
+import { ThemeToggleButton } from "@/components/ui/theme-toggle-button";
 
 const Header = () => {
   const { data: session, isPending } = authClient.useSession();
@@ -50,7 +50,7 @@ const Header = () => {
 
         {/* Actions */}
         <div className="flex items-center lg:gap-4 gap-2">
-          <ThemeToggle />
+          <ThemeToggleButton variant="circle" start="top-right" />
           {isPending ? null : session ? (
             <UserDropdown
               email={session.user.email}

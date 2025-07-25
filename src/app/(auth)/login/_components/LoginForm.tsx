@@ -11,8 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
-import { IconBrandGoogle } from "@tabler/icons-react";
-import { EarthIcon, GithubIcon, Loader2, Send } from "lucide-react";
+import { GithubIcon, Loader2, Send } from "lucide-react";
+import { FaGoogle } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import React, { useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -92,7 +92,7 @@ const LoginForm = () => {
             )}
           </Button>
           <Button className="w-full" variant="outline">
-            <IconBrandGoogle className="size-4" />
+            <FaGoogle className="size-4" />
             Sign in with Google
           </Button>
 
