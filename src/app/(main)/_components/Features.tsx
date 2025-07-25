@@ -12,40 +12,41 @@ const Features = () => {
   const features = [
     {
       icon: <MessageSquare className="w-6 h-6" />,
-      title: "Enhanced Team Communication",
+      title: "Community & Discussions",
       description:
-        "Streamline your team's communication with real-time messaging, file sharing, and collaborative workspaces.",
+        "Engage with peers and instructors in real-time through interactive discussions, Q&A forums, and peer feedback.",
     },
     {
       icon: <Calendar className="w-6 h-6" />,
-      title: "Intelligent Task Management",
+      title: "Flexible Learning Paths",
       description:
-        "AI-powered task prioritization and automated workflow management to keep your projects on track.",
+        "Learn at your own pace with structured modules, milestone tracking, and personalized course progression.",
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
-      title: "Advanced Analytics",
+      title: "Progress & Performance Analytics",
       description:
-        "Gain insights into team performance and project progress with comprehensive analytics and reporting.",
+        "Track your learning journey with detailed analytics, completion rates, and performance insights.",
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: "Enterprise Security",
+      title: "Secure & Scalable Platform",
       description:
-        "Bank-level security with end-to-end encryption and compliance with industry standards.",
+        "A self-hosted solution with enterprise-grade security, ensuring full control of your data and user access.",
     },
   ];
+
   return (
     <div>
       <section id="features" className="py-20 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="lg:text-4xl text-3xl font-semibold mb-4">
-              Enhanced Team Communication
+              Platform Features Designed for Modern Learning
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything your team needs to collaborate effectively and deliver
-              exceptional results.
+              Discover powerful tools that empower individuals and teams to
+              learn, grow, and succeed—on their terms.
             </p>
           </div>
 
