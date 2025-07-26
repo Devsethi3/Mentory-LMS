@@ -46,12 +46,12 @@ const AdminCourseCard = ({ data }: AdminCourseCardProps) => {
                   Edit Course
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              {/* <DropdownMenuItem asChild>
                 <Link href={`/admin/courses/${data.slug}`}>
                   <EyeIcon className="size-4 mr-2" />
                   Preview{" "}
                 </Link>
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href={`/admin/courses/${data.id}/delete`}>

@@ -35,7 +35,7 @@ const EditCoursePage = async ({ params }: { params: Params }) => {
                 Provide basic information about the course
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="lg:px-6 px-4">
               <EditCourseForm data={data} />
             </CardContent>
           </Card>
