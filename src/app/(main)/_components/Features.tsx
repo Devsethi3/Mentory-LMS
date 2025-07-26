@@ -41,12 +41,12 @@ const Features = () => {
       <section id="features" className="pt-20 pb-6 bg-background">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="lg:text-4xl text-3xl font-semibold mb-4">
+            <h2 className="lg:text-4xl text-3xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
               Platform Features Designed for Modern Learning
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="lg:text-lg text-base mt-2 text-muted-foreground max-w-xl mx-auto">
               Discover powerful tools that empower individuals and teams to
-              learn, grow, and succeed—on their terms.
+              learn.
             </p>
           </div>
 

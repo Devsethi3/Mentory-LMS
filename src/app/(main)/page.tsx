@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Footer } from "./_components/Footer";
 import { SolutionsSection } from "./_components/FeatureSection";
 import TestimonialSection from "./_components/TestimonialSection";
-import DisplayCardsSection from "./_components/DisplayCardSection";
 import { motion } from "motion/react";
 import { MdArrowOutward } from "react-icons/md";
 import { ChevronRight } from "lucide-react";
@@ -70,7 +69,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl text-center tracking-tighter font-geist bg-clip-text text-transparent mx-auto md:text-6xl lg:text-7xl bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]"
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]"
               >
                 {/* Your Hub for Iterative Learning & Rapid Skill Development */}
                 Self-Hosted Learning Built for High Performers
@@ -80,7 +79,7 @@ const HomePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-transparent text-center mt-5 bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 dark:from-purple-300 dark:to-orange-200 lg:text-2xl md:text-lg text-base max-w-3xl"
+                className="text-transparent text-center mt-5 bg-clip-text bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] lg:text-2xl md:text-lg text-base max-w-3xl"
               >
                 A self-hosted platform to discover, buy, and master expert-led
                 courses—designed to help individuals and teams grow faster.
@@ -116,7 +115,6 @@ const HomePage = () => {
       </section>
 
       <Features />
-      <DisplayCardsSection />
       <SolutionsSection />
       <TestimonialSection />
       <Footer />

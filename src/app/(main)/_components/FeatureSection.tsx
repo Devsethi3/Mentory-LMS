@@ -82,8 +82,8 @@ export const SolutionsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="pb-20 bg-background">
+      <div className="container">
         <motion.div
           variants={fadeInUp}
           initial="initial"
@@ -91,12 +91,12 @@ export const SolutionsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="lg:text-4xl text-3xl font-semibold text-foreground mb-6">
-            Tailored solutions for every need
+          <h2 className="lg:text-4xl text-3xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+            Precision Learning: Designed for Every Goal, Every Scale.
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Whether you're scaling a team, running an institution, or pursuing
-            personal growth, we have the perfect solution.
+          <p className="lg:text-lg text-base mt-2 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Whether you're an individual charting a new career path, a team
+            striving for collective excellence.
           </p>
         </motion.div>
 
@@ -111,7 +111,7 @@ export const SolutionsSection = () => {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className="bg-card border border-border rounded-3xl p-8 hover:shadow-2xl transition-all duration-300"
+              className="bg-card border border-border rounded p-8 hover:shadow-2xl transition-all duration-300"
             >
               <div className="mb-6">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">

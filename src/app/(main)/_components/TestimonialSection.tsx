@@ -64,8 +64,7 @@ const thirdColumn = testimonials.slice(6, 9);
 
 const TestimonialSection = () => {
   return (
-    <section className="bg-background my-20 relative">
-      
+    <section className="bg-background mb-20 relative">
       <div className="container z-10 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,10 +74,10 @@ const TestimonialSection = () => {
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
           <div className="flex justify-center">
-            <div className="border py-1 px-4 rounded-lg">Testimonials</div>
+            <div className="border py-1 px-4 rounded">Testimonials</div>
           </div>
 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] mt-5">
             What our users say
           </h2>
           <p className="text-center lg:text-base text-sm mt-2 opacity-75">
@@ -100,7 +99,6 @@ const TestimonialSection = () => {
           />
         </div>
       </div>
-      
     </section>
   );
 };

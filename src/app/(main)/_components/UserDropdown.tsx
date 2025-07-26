@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { useSignOut } from "@/hooks/use-signout";
+import { motion } from "motion/react";
 
 interface UserDropdownProps {
   name: string;
@@ -51,11 +52,11 @@ export function UserDropdown({ name, email, image }: UserDropdownProps) {
               {getInitials(name)}
             </AvatarFallback>
           </Avatar>
-          <ChevronDownIcon
+          {/* <ChevronDownIcon
             size={14}
             className="text-muted-foreground transition-transform ui-open:rotate-180"
             aria-hidden="true"
-          />
+          /> */}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

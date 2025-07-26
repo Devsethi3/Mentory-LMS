@@ -115,7 +115,9 @@ export function Footer() {
                   {/* Glow effect for dark mode */}
                   <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
                 </div>
-                <span className="text-2xl font-bold">Mentory LMS</span>
+                <span className="text-2xl tracking-tighter font-geist bg-clip-text text-transparent mx-auto bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+                  Mentory LMS
+                </span>
               </Link>
             </motion.div>
 
@@ -161,7 +163,7 @@ export function Footer() {
                 transition={{ duration: 0.5, delay: 0.1 + sectionIndex * 0.1 }}
                 className="space-y-4"
               >
-                <h4 className="text-slate-900 dark:text-white font-semibold text-sm uppercase tracking-wider">
+                <h4 className="text-slate-900 dark:text-white text-sm uppercase tracking-wider">
                   {section.title}
                 </h4>
                 <ul className="space-y-3">
