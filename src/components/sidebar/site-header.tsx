@@ -11,7 +11,9 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">Mentory LMS</h1>
+        <span className="lg:text-xl text-lg font-medium font-geist bg-clip-text text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+          MENTORY
+        </span>
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggleButton variant="circle" start="top-right" />
         </div>
