@@ -2,25 +2,36 @@
 
 import Features from "@/app/(main)/_components/Features";
 import Header from "@/app/(main)/_components/Header";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Footer } from "./_components/Footer";
 import { SolutionsSection } from "./_components/FeatureSection";
 import TestimonialSection from "./_components/TestimonialSection";
 import { motion } from "motion/react";
 import { MdArrowOutward } from "react-icons/md";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
     <>
       <Header />
-      <section className="relative min-h-[calc(630px-var(--header-height))] overflow-hidden lg:py-32 py-20 bg-gradient-to-t from-primary/10 to-background">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="relative min-h-[calc(630px-var(--header-height))] overflow-hidden lg:py-32 py-20 bg-gradient-to-t from-primary/10 to-background"
+      >
         {/* Decorative Grids */}
-        <div className="absolute left-0 top-0 z-0 grid h-full w-full grid-cols-[clamp(28px,10vw,120px)_auto_clamp(28px,10vw,120px)] border-b border-[--border] dark:border-[--dark-border]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="absolute left-0 top-0 z-0 grid h-full w-full grid-cols-[clamp(28px,10vw,120px)_auto_clamp(28px,10vw,120px)] border-b border-[--border] dark:border-[--dark-border]"
+        >
           <div className="col-span-1" />
           <div className="col-span-1 border-x border-[--border] dark:border-[--dark-border]" />
           <div className="col-span-1" />
-        </div>
+        </motion.div>
 
         {/* Blurred Figures */}
         <motion.figure
@@ -44,7 +55,12 @@ const HomePage = () => {
 
         <div className="relative z-10 flex flex-col divide-y divide-[--border] pt-[10px] dark:divide-[--dark-border]">
           {/* Avatar */}
-          <div className="flex flex-col items-center justify-end">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="flex flex-col items-center justify-end"
+          >
             {/* className="!border !border-b-0 border-[--border] px-4 py-2 dark:border-[--dark-border]" */}
             <div className="flex items-center gap-2">
               {/* <div className="text-sm tracking-tight text-[--text-tertiary] dark:text-[--dark-text-tertiary] flex items-center gap-4">
@@ -55,12 +71,20 @@ const HomePage = () => {
                 </div>
                 Join the Community ✨
               </div> */}
-              <p className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto p-3 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 w-fit">
+              <motion.p
+                whileHover={{ scale: 1.02 }}
+                transition={{
+                  type: "spring" as const,
+                  stiffness: 300,
+                  damping: 20,
+                }}
+                className="text-sm text-gray-600 dark:text-gray-400 group font-geist mx-auto p-3 bg-gradient-to-tr from-zinc-300/20 via-gray-400/20 to-transparent dark:from-zinc-300/5 dark:via-gray-400/5 border-[2px] border-black/5 dark:border-white/5 w-fit cursor-pointer"
+              >
                 ✨ Your Learning Hub
                 <ChevronRight className="inline w-4 h-4 ml-2 group-hover:translate-x-1 duration-300" />
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Heading and Subheading */}
           <div>
@@ -95,31 +119,89 @@ const HomePage = () => {
             className="flex items-start justify-center px-8 sm:px-24"
           >
             <div className="flex flex-col items-center w-full max-w-md mx-auto">
-              <Button
-                variant="ghost"
-                className="w-full lg:py-7 py-6 font-normal lg:text-lg text-base hover:bg-white/10 border"
-                size="lg"
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring" as const,
+                  stiffness: 300,
+                  damping: 20,
+                }}
+                className="w-full"
               >
-                Request Demo
-              </Button>
-              <Button
-                className="w-full lg:py-7 py-6 font-normal lg:text-lg text-base"
-                size="lg"
+                <Button
+                  variant="ghost"
+                  className="w-full lg:py-7 py-6 font-normal lg:text-lg text-base hover:bg-white/10 border"
+                  size="lg"
+                >
+                  Request Demo
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring" as const,
+                  stiffness: 300,
+                  damping: 20,
+                }}
+                className="w-full"
               >
-                Get Started
-                <MdArrowOutward className="size-5 ml-1" />
-              </Button>
+                <Link
+                  className={buttonVariants({
+                    className:
+                      "w-full lg:py-7 py-6 font-normal lg:text-lg text-base group",
+                    size: "lg",
+                  })}
+                  href="/login"
+                >
+                  Get Started
+                  <MdArrowOutward className="size-5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <Features />
-      <SolutionsSection />
-      <TestimonialSection />
-      <Footer />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Features />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
+        <SolutionsSection />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <TestimonialSection />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        <Footer />
+      </motion.div>
     </>
   );
 };
 
 export default HomePage;
+

@@ -125,7 +125,10 @@ const Header = () => {
             { href: "/changelog", label: "Changelog" },
           ].map((item) => (
             <div key={item.href} className="relative group">
-              <Link href={item.href} className="relative opacity-80 hover:opacity-100">
+              <Link
+                href={item.href}
+                className="relative opacity-80 hover:opacity-100"
+              >
                 {item.label}
                 <motion.div
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary origin-left"
