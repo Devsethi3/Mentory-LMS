@@ -48,7 +48,7 @@ const EditCoursePage = async ({ params }: { params: Params }) => {
                 Here&apos;s you can update your course structure
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="lg:px-6 px-4">
               <CourseStructure data={data} />
             </CardContent>
           </Card>

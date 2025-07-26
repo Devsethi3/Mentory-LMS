@@ -294,7 +294,7 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
           <CardTitle>Chapters</CardTitle>
           <NewChapterModal courseId={data.id} />
         </CardHeader>
-        <CardContent className="space-y-8">
+        <CardContent className="space-y-8 lg:px-6 px-4">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <BookOpen className="size-16 text-muted-foreground mb-4" />
@@ -341,7 +341,7 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
                                 )}
                               </Button>
                             </CollapsibleTrigger>
-                            <p className="cursor-pointer hover:text-primary text-lg font-medium">
+                            <p className="cursor-pointer hover:text-primary text-lg font-medium line-clamp-1">
                               {item.title}
                             </p>
                           </div>
@@ -376,6 +376,7 @@ const CourseStructure = ({ data }: CourseStructureProps) => {
                                         <FileText className="size-4" />
                                         <Link
                                           href={`/admin/courses/${data.id}/${item.id}/${lesson.id}`}
+                                          className="line-clamp-1"
                                         >
                                           {lesson.title}
                                         </Link>
