@@ -101,7 +101,9 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function DashboardAppSidebar({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -111,9 +113,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <Link href="/">
+              <Link href="/" className="relative">
                 <Image src="/logo.svg" alt="logo" width={35} height={35} />
-                <span className="text-base font-semibold">Mentory</span>
+                <span className="text-lg">MENTORY</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

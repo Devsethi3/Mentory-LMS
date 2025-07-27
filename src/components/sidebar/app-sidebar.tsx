@@ -44,17 +44,17 @@ const data = {
     },
     {
       title: "Analytics",
-      url: "#",
+      url: "/admin/analytics",
       icon: IconChartBar,
     },
     {
       title: "Projects",
-      url: "#",
+      url: "/admin/projects",
       icon: IconFolder,
     },
     {
       title: "Team",
-      url: "#",
+      url: "/admin/team",
       icon: IconUsers,
     },
   ],
@@ -63,45 +63,45 @@ const data = {
       title: "Capture",
       icon: IconCamera,
       isActive: true,
-      url: "#",
+      url: "/admin/capture",
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: "/admin/capture/active",
         },
         {
           title: "Archived",
-          url: "#",
+          url: "/admin/capture/archived",
         },
       ],
     },
     {
       title: "Proposal",
       icon: IconFileDescription,
-      url: "#",
+      url: "/admin/proposals",
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: "/admin/proposals/active",
         },
         {
           title: "Archived",
-          url: "#",
+          url: "/admin/proposals/archived",
         },
       ],
     },
     {
       title: "Prompts",
       icon: IconFileAi,
-      url: "#",
+      url: "/admin/prompts",
       items: [
         {
           title: "Active Proposals",
-          url: "#",
+          url: "/admin/prompts/active",
         },
         {
           title: "Archived",
-          url: "#",
+          url: "/admin/prompts/archived",
         },
       ],
     },
@@ -109,17 +109,17 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/admin/settings",
       icon: IconSettings,
     },
     {
       title: "Get Help",
-      url: "#",
+      url: "/admin/help",
       icon: IconHelp,
     },
     {
       title: "Search",
-      url: "#",
+      url: "/admin/search",
       icon: IconSearch,
     },
   ],
@@ -127,37 +127,54 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader>
+    <Sidebar
+      collapsible="offcanvas"
+      className="border-r border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      {...props}
+    >
+      <SidebarHeader className="border-b border-border/40 bg-muted/20">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:!p-3 group hover:bg-accent/50 transition-all duration-300"
             >
-              <Link href="/" className="flex items-center space-x-2">
+              <Link href="/" className="flex items-center space-x-3">
                 <div className="relative">
                   <Image
                     src="/logo.svg"
-                    width={35}
-                    height={35}
+                    width={32}
+                    height={32}
                     alt="Mentory LMS logo"
-                    className="group-hover:scale-105 transition-transform duration-200"
+                    className="group-hover:scale-110 transition-transform duration-300 ease-out"
                   />
-                  {/* Glow effect for dark mode */}
-                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-md opacity-0 dark:opacity-100 group-hover:opacity-30 transition-opacity duration-300" />
+                  {/* Enhanced glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-lg opacity-0 dark:opacity-20 group-hover:opacity-40 transition-all duration-500 scale-150" />
                 </div>
-                <span className="text-lg font-bold">Mentory LMS</span>
+                <div className="flex flex-col">
+                  <span className="text-base font-semibold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
+                    Mentory LMS
+                  </span>
+                  <span className="text-xs text-muted-foreground font-medium">
+                    Admin Panel
+                  </span>
+                </div>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+
+      <SidebarContent className="px-2 py-4 space-y-6">
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+
+        {/* Divider */}
+        <div className="h-px bg-border/60 mx-4" />
+
+        <NavSecondary items={data.navSecondary} />
       </SidebarContent>
-      <SidebarFooter>
+
+      <SidebarFooter className="border-t border-border/40 bg-muted/20 p-4">
         <NavUser />
       </SidebarFooter>
     </Sidebar>

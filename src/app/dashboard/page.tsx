@@ -12,8 +12,12 @@ const DashboardPage = async () => {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold">Enrolled Courses</h1>
-        <p>Here you can see all the courses you have access to</p>
+        <h1 className="text-3xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+          Enrolled Courses
+        </h1>
+        <p className="text-muted-foreground">
+          Here you can see all the courses you have access to
+        </p>
       </div>
 
       {enrolledCourses.length === 0 ? (
@@ -33,8 +37,12 @@ const DashboardPage = async () => {
 
       <section className="mt-10">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold">Available Courses</h1>
-          <p>Here you can see all the courses you purchased</p>
+          <h1 className="text-3xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+            Available Courses
+          </h1>
+          <p className="text-muted-foreground">
+            Here you can see all the courses you purchased
+          </p>
         </div>
 
         {courses.filter(

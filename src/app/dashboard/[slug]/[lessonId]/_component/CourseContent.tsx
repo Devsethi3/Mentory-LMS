@@ -100,7 +100,7 @@ const CourseContent = ({ data }: CourseContentProps) => {
       </div>
 
       <div className="space-y-3 pt-3">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        <h1 className="text-3xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
           {data.title}
         </h1>
         {data.description && (

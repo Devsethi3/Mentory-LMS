@@ -18,7 +18,6 @@ const EmptyState = ({
 }: EmptyStateProps) => {
   return (
     <div className="flex flex-col items-center justify-center py-16 px-4">
- 
       <Image
         src="/course-empty-state.svg"
         alt="No Course"
@@ -26,7 +25,7 @@ const EmptyState = ({
         height={200}
       />
 
-      <h2 className="text-2xl mt-4 font-semibold text-foreground mb-2 text-center">
+      <h2 className="text-2xl mt-4 bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] mb-2 text-center">
         {title}
       </h2>
 

@@ -31,7 +31,7 @@ async function RenderCourses() {
   return (
     <>
       <div className="flex flex-col space-y-2 mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">
+        <h1 className="text-3xl md:text-4xl bg-clip-text text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)] tracking-tighter">
           Explore Courses
         </h1>
         <p className="text-muted-foreground">
@@ -81,8 +81,8 @@ function EmptyState() {
           No Courses Available Yet
         </h2>
         <p className="text-muted-foreground leading-relaxed">
-          We&apos;re working hard to bring you amazing learning experiences. Check
-          back soon for exciting new courses!
+          We&apos;re working hard to bring you amazing learning experiences.
+          Check back soon for exciting new courses!
         </p>
       </div>
 

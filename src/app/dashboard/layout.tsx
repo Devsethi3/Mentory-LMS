@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/sidebar/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
-import { AppSidebar } from "./_components/DashboardAppSidebar";
+import { DashboardAppSidebar } from "./_components/DashboardAppSidebar";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       }
     >
       <>
-        <AppSidebar variant="inset" />
+        <DashboardAppSidebar variant="inset" />
         <SidebarInset>
           <SiteHeader />
           <div className="flex flex-1 flex-col">

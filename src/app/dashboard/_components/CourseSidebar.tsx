@@ -45,7 +45,7 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
             <span className="text-muted-foreground">Progress</span>
-            <span className="font-medium">
+            <span className="font-medium lg:pr-0 pr-3">
               {completedLessons}/{totalLessons} lessons
             </span>
           </div>
@@ -100,3 +100,4 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
 };
 
 export default CourseSidebar;
+

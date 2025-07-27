@@ -31,7 +31,7 @@ const SlugPage = async ({ params }: { params: Params }) => {
   const { slug } = await params;
   const course = await getIndividualCourse(slug);
   const isEnrolled = await checkIfCourseBought(course.id);
-  
+
   return (
     <>
       <Header />
@@ -50,10 +50,10 @@ const SlugPage = async ({ params }: { params: Params }) => {
 
           <div className="mt-8 space-y-6">
             <div className="space-y-4">
-              <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold tracking-tight">
+              <h1 className="lg:text-4xl md:text-3xl text-2xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
                 {course.title}
               </h1>
-              <p className="lg:text-lg text-base text-muted-foreground leading-tight line-clamp-2 ">
+              <p className="lg:text-lg text-base text-muted-foreground leading-tight line-clamp-2">
                 {course.smallDescription}
               </p>
             </div>
@@ -76,7 +76,7 @@ const SlugPage = async ({ params }: { params: Params }) => {
             <Separator className="my-8" />
 
             <div className="space-y-6">
-              <h2 className="text-2xl font-semibold tracking-tight">
+              <h2 className="text-2xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
                 Course Description
               </h2>
 
@@ -86,17 +86,17 @@ const SlugPage = async ({ params }: { params: Params }) => {
 
           <div className="mt-12 space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-3xl font-semibold tracking-tight">
+              <h2 className="text-2xl bg-clip-text tracking-tight text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
                 Course Content
               </h2>
-              <div>
+              <p className="text-sm">
                 {course.chapter.length} chapter |{" "}
                 {course.chapter.reduce(
                   (total, chapter) => total + chapter.lessons.length,
                   0
                 ) || 0}{" "}
                 Lessons
-              </div>
+              </p>
             </div>
 
             <div className="space-y-1">
