@@ -14,6 +14,27 @@ const Header = () => {
   const { data: session, isPending } = authClient.useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Get navigation items based on session status
+  const getNavItems = () => {
+    const baseItems = [
+      { href: "/", label: "Home" },
+      { href: "/courses", label: "Courses" },
+      { href: "/blog", label: "Blog" },
+      { href: "/changelog", label: "Changelog" },
+    ];
+
+    if (session) {
+      // Add dashboard link based on user role
+      const dashboardItem = {
+        href: session.user.role === "admin" ? "/admin" : "/dashboard",
+        label: session.user.role === "admin" ? "Admin Dashboard" : "Dashboard"
+      };
+      return [...baseItems, dashboardItem];
+    }
+
+    return baseItems;
+  };
+
   const menuVariants = {
     closed: {
       opacity: 0,
@@ -85,6 +106,8 @@ const Header = () => {
     },
   };
 
+  const navItems = getNavItems();
+
   return (
     <motion.header
       className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-2xl border-b"
@@ -118,12 +141,7 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {[
-            { href: "/", label: "Home" },
-            { href: "/courses", label: "Courses" },
-            { href: "/blog", label: "Blog" },
-            { href: "/changelog", label: "Changelog" },
-          ].map((item) => (
+          {navItems.map((item) => (
             <div key={item.href} className="relative group">
               <Link
                 href={item.href}
@@ -258,12 +276,7 @@ const Header = () => {
           >
             <div className="px-4 pb-6 pt-4">
               <div className="space-y-2">
-                {[
-                  { href: "/", label: "Home" },
-                  { href: "/courses", label: "Courses" },
-                  { href: "/blog", label: "Blog" },
-                  { href: "/changelog", label: "Changelog" },
-                ].map((item, index) => (
+                {navItems.map((item, index) => (
                   <motion.div
                     key={item.href}
                     variants={menuItemVariants}
