@@ -49,7 +49,7 @@ export function NavMain({
                 tooltip="Quick Create Course"
                 className={cn(
                   "group relative overflow-hidden",
-                  "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
+                  "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:text-white",
                   "hover:from-blue-700 hover:to-purple-700",
                   "shadow-lg hover:shadow-xl",
                   "transition-all duration-300 ease-out",
@@ -95,7 +95,7 @@ export function NavMain({
                     {item.icon && (
                       <div className={cn(
                         "relative transition-all duration-200",
-                        active && "text-primary"
+                        active && "text-primary dark:text-white"
                       )}>
                         <item.icon className={cn(
                           "size-4 transition-all duration-200",
@@ -108,7 +108,7 @@ export function NavMain({
                     )}
                     <span className={cn(
                       "font-medium transition-all duration-200",
-                      active && "text-primary font-semibold"
+                      active && "text-primary font-semibold dark:text-white"
                     )}>
                       {item.title}
                     </span>
