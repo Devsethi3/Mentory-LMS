@@ -6,13 +6,17 @@ import AdminCourseCard, {
   AdminCourseCardSkeleton,
 } from "./_components/AdminCourseCard";
 import EmptyState from "@/components/general/EmptyState";
+import { PlusIcon } from "lucide-react";
 
 const CoursesPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Your Courses</h1>
+        <h1 className="text-2xl bg-clip-text text-transparent bg-[linear-gradient(180deg,_#000_0%,_rgba(0,_0,_0,_0.75)_100%)] dark:bg-[linear-gradient(180deg,_#FFF_0%,_rgba(255,_255,_255,_0.00)_202.08%)]">
+          Your Courses
+        </h1>
         <Link href="/admin/courses/create" className={buttonVariants()}>
+          <PlusIcon />
           Create Course
         </Link>
       </div>
